@@ -1,0 +1,23 @@
+h1 | ユーザー登録
+- @user.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{@user.errors.count} 件のエラーがあります
+    ul
+    - @user.errors.full_messages.each do |msg|
+      li #{msg}
+div.raw
+  = form_with model: @user, local:true do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'u-full-width', id: 'sign_up_name'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'u-full-width', id: 'sign_up_email'
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'u-full-width', id: 'sign_up_password'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'u-full-width', id: 'sign_up_password_confirmation'
+    = f.submit '登録する' , class:'button-primary'

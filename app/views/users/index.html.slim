@@ -1,0 +1,7 @@
+div.users_list
+  ul
+    - @users.each do |user|
+      li
+        = link_to user_path(user), id: "user_#{user.id}" do
+          p #{user.name}
+          p #{user.email}
