@@ -4,10 +4,11 @@ class User < ApplicationRecord
 
   validates :name, presence: true,uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password, confirmation: true, presence: true, length: { minimum: 8 }, unless: :password_blank?
+  validates :password_digest, presence: true, length: { minimum: 8 }, unless: :password_blank?
 
   private
   def password_blank?
     password.blank?
   end
+
 end

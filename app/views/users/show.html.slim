@@ -1,0 +1,23 @@
+h1 ユーザープロフィール
+- @user.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{@user.errors.count} 件のエラーがあります
+    ul
+    - @user.errors.full_messages.each do |msg|
+      li #{msg}
+div.raw.user_profile
+  div.four.columns.left
+    div.avatar
+  div.eight.columns.right
+    div.name #{@user.name}
+    = link_to 'プロフィール編集', edit_user_path(@user), class:'button button-primary edit'
+    ul.count
+      li 投稿
+      li フォロワー
+      li フォロー
+    div.comment #{@user.comment}
+div.raw
+  h3 ファミリーアニマル
+div.raw
+  h3 フォローアニマル
