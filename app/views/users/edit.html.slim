@@ -1,0 +1,27 @@
+h1 ユーザープロフィール
+- @user.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{@user.errors.count} 件のエラーがあります
+    ul
+    - @user.errors.full_messages.each do |msg|
+      li #{msg}
+= form_with model: @user, local:true do |f|
+  div.raw.user_profile
+    div.four.columns.left
+      div.avatar
+    div.eight.columns.right
+      div.raw
+        = f.label :name
+        = f.text_field :name, placeholder:"ユーザーネーム", id: 'sign_up_name'
+        = f.label :email
+        = f.email_field :email, id: 'sign_up_email'
+        = f.label :password
+        = f.password_field :password, id: 'sign_up_password'
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, id: 'sign_up_password_confirmation'
+      div.comment
+        = f.label :comment
+        = f.text_area :comment, placeholder:"コメント"
+  div.raw.card_list
+    = f.submit '登録する' , class:'button-primary submit'

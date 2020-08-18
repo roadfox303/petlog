@@ -13,7 +13,40 @@
  *= require_tree .
  *= require_self
  */
-
+$font-color: #333333;
+$font-placeholder: #cccccc;
 body {
   margin: 0;
+  background-color: #f8f8f8;
+  color: $font-color;
+}
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+li {
+  margin: 0;
+}
+textarea {
+  line-height: 1.6;
+  letter-spacing: 0.1;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+  // IE
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Edge
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+input,textarea {
+  @include placeholder($font-placeholder);
 }

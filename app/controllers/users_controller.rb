@@ -21,6 +21,17 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    # if @user.save
+    #   redirect_to users_path, notice: "「#{@user.name}」のプロフィールを編集しました"
+    # else
+    #   render :edit, notice: "「#{@user.name}」のプロフィールを編集できませんでした"
+    # end
+  end
+
   private
 
   def user_params

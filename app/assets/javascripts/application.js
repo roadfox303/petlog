@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+document.addEventListener('turbolinks:load', function() {
+  autosize($('textarea'));
+});

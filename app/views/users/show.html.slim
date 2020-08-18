@@ -10,14 +10,31 @@ div.raw.user_profile
   div.four.columns.left
     div.avatar
   div.eight.columns.right
-    div.name #{@user.name}
-    = link_to 'プロフィール編集', edit_user_path(@user), class:'button button-primary edit'
+    div.raw
+      div.name #{@user.name}
+      div.edit
+        = link_to 'プロフィール編集', edit_user_path(@user), class:'button2 button-secondary'
     ul.count
-      li 投稿
-      li フォロワー
-      li フォロー
-    div.comment #{@user.comment}
-div.raw
-  h3 ファミリーアニマル
-div.raw
-  h3 フォローアニマル
+      li
+        span 投稿
+        span.number 34
+        span 件
+      li
+        span フォロワー
+        span.number 14
+        span 人
+      li
+        span フォロー
+        span.number 4
+        span 人
+    div.comment
+      h6 comment
+      p #{@user.comment}
+div.raw.card_list
+  div.title
+    h5 ファミリーアニマル
+    span - 3
+div.raw.card_list
+  div.title
+    h5 フォローアニマル
+    span - 12

@@ -1,19 +1,84 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.users .user_profile{
-  overflow: hidden;
+$border-color: #e0e0e0;
+.users h1 {
+  margin: 1rem 0;
 }
-.user_profile .left{
+.users .user_profile {
+  overflow: hidden;
+  padding: 3rem 0;
+}
+.user_profile .left {
 
 }
-.user_profile .avatar{
+.user_profile .avatar {
   height: 152px;
   width: 152px;
   margin: auto;
   background: #cccccc;
   border-radius: 50%;
 }
-.user_profile .name{
+.user_profile .right {
 
+}
+.user_profile .name {
+  font-size: 2.2rem;
+  display: table-cell;
+  padding-right: 4rem;
+  line-height: 2.2;
+}
+.user_profile .edit {
+  display: table-cell;
+  padding: 0;
+  vertical-align: middle;
+  line-height: 1;
+}
+.user_profile .edit .button2{
+  padding: 0.8rem 3rem;
+}
+.user_profile .count {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+.user_profile .count li {
+  margin-right: 4rem;
+}
+.user_profile .count li .number {
+  padding: 0 0.75rem;
+  font-weight: 600;
+}
+.user_profile .comment {
+  margin-top: 1.5rem;
+  word-wrap: break-word;
+}
+.user_profile .comment h6 {
+  margin-bottom: 1rem;
+}
+.user_profile .comment textarea{
+  width: 100%;
+}
+.card_list {
+  border-top: solid 1px $border-color;
+  padding-top: 2.4rem;
+}
+.card_list h6 {
+  display: block;
+}
+.card_list .title {
+  display: table;
+}
+.card_list .title h6, .card_list .title span {
+  display: table-cell;
+}
+.user_profile input {
+  width: 100%;
+}
+.card_list .submit {
+  margin: auto;
+  display: block;
 }
