@@ -10,7 +10,21 @@
   </head>
 
   <body class="<%= controller.controller_name %>">
+    <ul class="nav-bar">
+      <% if current_user %>
+      <li><%= link_to 'プロフィール', user_path(current_user), class:'nav_link'%></li>
+      <li><%= link_to 'ユーザー一覧', users_path, class:'nav_link'%></li>
+      <li><%= link_to 'ログアウト', logout_path, method: :delete, class:'nav_link'%></li>
+      <% else %>
+      <li><%= link_to 'ログイン', login_path, class:'nav_link'%></li>
+      <% end %>
+    </ul>
     <div class="container">
+      <% if flash.notice.present? %>
+      <div>
+        <%= flash.notice %>
+      </div>
+      <% end %>
       <%= yield %>
     <div>
   </body>

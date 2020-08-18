@@ -12,8 +12,9 @@ div.raw.user_profile
   div.eight.columns.right
     div.raw
       div.name #{@user.name}
-      div.edit
-        = link_to 'プロフィール編集', edit_user_path(@user), class:'button2 button-secondary'
+      - if @user == current_user
+        div.edit
+          = link_to 'プロフィール編集', edit_user_path(current_user), class:'button2 button-secondary'
     ul.count
       li
         span 投稿

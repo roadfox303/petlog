@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy]
+  skip_before_action :login_required, only: [:index, :show]
+
   def index
     @users = User.all
   end
@@ -25,11 +27,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    # if @user.save
-    #   redirect_to users_path, notice: "「#{@user.name}」のプロフィールを編集しました"
-    # else
-    #   render :edit, notice: "「#{@user.name}」のプロフィールを編集できませんでした"
-    # end
+    if @user.update!(user_params)
+      redirect_to user_path(current_user), notice: "「#{@user.name}」のプロフィールを編集しました"
+    else
+      render :edit, notice: "「#{@user.name}」のプロフィールを編集できませんでした"
+    end
   end
 
   private
