@@ -32,7 +32,26 @@ textarea {
   line-height: 1.6;
   letter-spacing: 0.1;
 }
+.checkbox_raw {
+  margin-bottom: 15px;
+}
+.checkbox_raw input[type="checkbox"]{
+  margin-bottom: 0;
+}
+.checkbox_raw label {
+  display: inline-block;
+  padding-left: 1rem;
+  font-weight: normal;
+  margin-bottom: 0;
+}
 
+.select_raw select {
+  margin-left:0.5rem;
+  margin-right:0.5rem;
+}
+.select_raw select:first-child {
+  margin-left:0;
+}
 @mixin placeholder($color) {
   &::placeholder {
     color: $color;
@@ -49,4 +68,14 @@ textarea {
 
 input,textarea {
   @include placeholder($font-placeholder);
+}
+.hidden {
+  display: none;
+}
+.disable input,.disable select{
+  pointer-events : none;
+  background: #cccccc;
+}
+.attention {
+  color:#f00;
 }

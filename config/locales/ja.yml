@@ -9,15 +9,29 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     model:
       user: ユーザー
+      pet: ペット
     attributes:
       user:
         id: ID
         name: ユーザー名
         email: メールアドレス
+        avatar: アバター
+        comment: コメント
         password: パスワード
         password_confirmation: 確認用パスワード
         created_at: 登録日時
         updated_at: 更新日時
+      pet:
+        id: ID
+        name: ペットの名前
+        avatar: アバター
+        species: 種族
+        sex: 性別
+        birthday: 生年月日
+        join_day: お迎え日
+        join_age: お迎え時の年齢
+        comment: コメント
+        intrust: 里親募集
   date:
     abbr_day_names:
     - 日
