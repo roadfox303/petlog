@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
   before_action :owner_check, only: [:edit, :update, :destroy]
   before_action :params_modifi, only:[:create, :update]
+  include BondGenerate
 
   def index
     @pets = Pet.all
@@ -12,8 +13,8 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-
     if @pet.save
+      PetsController.bond_create(user_id: current_user.id, pet_id: @pet.id, relation_category_id: 4)
       redirect_to users_path, notice: "オーナーとして「#{@pet.name}」を登録しました"
     else
       render :new
@@ -33,10 +34,12 @@ class PetsController < ApplicationController
 
   def date_join(date)
     date_element = date.keys
+
     if date[date_element[0]].empty? || date[date_element[1]].empty? || date[date_element[2]].empty?
       return
     end
     Date.new date[date_element[0]].to_i,date[date_element[1]].to_i,date[date_element[2]].to_i
+
   end
 
   def owner_check
