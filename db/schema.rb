@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_073151) do
+ActiveRecord::Schema.define(version: 2020_08_21_054230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_08_19_073151) do
     t.boolean "intrust", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["intrust"], name: "index_pets_on_intrust"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "relation_categories", force: :cascade do |t|
@@ -61,4 +63,5 @@ ActiveRecord::Schema.define(version: 2020_08_19_073151) do
   add_foreign_key "bonds", "pets"
   add_foreign_key "bonds", "relation_categories"
   add_foreign_key "bonds", "users"
+  add_foreign_key "pets", "users"
 end
