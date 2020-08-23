@@ -1,0 +1,42 @@
+- pet.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{pet.errors.count} 件のエラーがあります
+    ul
+    - pet.errors.full_messages.each do |msg|
+      li #{msg}
+= form_with model: pet, local:true do |f|
+  div.raw.pet_profile
+    div.four.columns.left
+      div.avatar
+    div.eight.columns.right
+      div.raw
+        = f.label :name
+        = f.text_field :name, placeholder:"※必須", id: 'pet_name'
+        = f.label :species
+        = f.text_field :species, id: 'pet_species', placeholder:"例)柴犬"
+        = f.label :sex
+        = f.text_field :sex, id: 'pet_sex', placeholder:"例)オス"
+        = f.label :birthday
+        div.select_raw
+          = raw sprintf(f.date_select(:birthday, prefix:'birthday', id: 'pet_birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1920, date_separator:'%s'),'年','月')+'日'
+        div.checkbox_raw
+          = check_box_tag :check_birthday, id:'check_birthday'
+          = label_tag :check_birthday, "わからない"
+        = f.label :join_day
+        div.select_raw
+          = raw sprintf(f.date_select(:join_day, prefix:'join_day', id: 'pet_join_day', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1920, date_separator:'%s'),'年','月')+'日'
+        = f.label :join_age, id:'label_join_age'
+        span.join_age_comment.attention.hidden 生年月日が分かっている場合、入力は不要です。
+        div.select_raw#raw_join_age
+          = raw sprintf(f.select :join_age, options_for_select((0..99).to_a),prompt:"--")+'歳'
+      div.comment
+        = f.label :comment
+        = f.text_area :comment, id:'pet_comment', placeholder:"コメント"
+      div.checkbox_raw
+        = f.check_box :intrust, {}, true, false
+        = f.label :intrust
+      = f.hidden_field :user_id, :value => current_user.id
+
+  div.raw.card_list
+    = f.submit '登録する' , class:'button-primary submit'

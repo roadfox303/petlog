@@ -5,6 +5,7 @@ class Pet < ApplicationRecord
 
   has_many :bonds
   has_many :users, through: :bonds, dependent: :destroy
+  belongs_to :owner, class_name: "User",foreign_key: "user_id"
 
   private
   def date_valid?

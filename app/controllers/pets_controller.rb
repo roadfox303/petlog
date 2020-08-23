@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
-  before_action :owner_check, only: [:edit, :update, :destroy]
-  before_action :params_modifi, only:[:create, :update]
+  before_action :set_id, only: [:show, :edit, :update, :destroy]
+  # before_action :owner_check, only: [:edit, :update, :destroy]
+  before_action :params_modifi, only: [:create, :update]
   include BondGenerate
 
   def index
@@ -21,10 +22,17 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :avatar, :species, :sex, :birthday, :join_day, :join_age, :comment, :intrust)
+    params.require(:pet).permit(:name, :avatar, :species, :sex, :birthday, :join_day, :join_age, :comment, :intrust, :user_id)
+  end
+
+  def set_id
+    @pet = Pet.find(params[:id])
   end
 
   def params_modifi
@@ -33,17 +41,8 @@ class PetsController < ApplicationController
   end
 
   def date_join(date)
-    date_element = date.keys
-
-    if date[date_element[0]].empty? || date[date_element[1]].empty? || date[date_element[2]].empty?
-      return
-    end
-    Date.new date[date_element[0]].to_i,date[date_element[1]].to_i,date[date_element[2]].to_i
-
-  end
-
-  def owner_check
-
+    date.values.map { |value| return if value.empty? }
+    Date.new date.values[0].to_i, date.values[1].to_i, date.values[2].to_i
   end
 
 end
