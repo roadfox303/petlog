@@ -10,15 +10,21 @@
   </head>
 
   <body class="<%= controller.controller_name %>" data-controller="<%= controller.controller_name %>" data-action="<%= controller.action_name %>">
-    <ul class="nav-bar">
-      <% if current_user %>
-      <li><%= link_to 'プロフィール', user_path(current_user), class:'nav_link'%></li>
-      <li><%= link_to 'ユーザー一覧', users_path, class:'nav_link'%></li>
-      <li><%= link_to 'ログアウト', logout_path, method: :delete, class:'nav_link'%></li>
-      <% else %>
-      <li><%= link_to 'ログイン', login_path, class:'nav_link'%></li>
-      <% end %>
-    </ul>
+    <div id="top_nav">
+      <div class="container">
+        <%= link_to 'Petlog', root_path, id:'top_logo' %>
+        <ul class="nav-bar">
+          <li><%= link_to 'ペット一覧', pets_path, class:'nav_link'%></li>
+          <% if current_user %>
+          <li><%= link_to 'プロフィール', user_path(current_user), class:'nav_link'%></li>
+          <li><%= link_to 'ユーザー一覧', users_path, class:'nav_link'%></li>
+          <li><%= link_to 'ログアウト', logout_path, method: :delete, class:'nav_link'%></li>
+          <% else %>
+          <li><%= link_to 'ログイン', login_path, class:'nav_link'%></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
     <div class="container">
       <% if flash.notice.present? %>
       <div>

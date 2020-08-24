@@ -1,10 +1,87 @@
 // Place all the styles related to the pets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$border-color: #e0e0e0;
-.users h1 {
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #2B2D41;
+$font-color-light: #8D99AF;
+$font-placeholder: #cccccc;
+$border-color: #D4D8DA;
+$hover_box: #EDF2F4;
+.pets h1 {
   margin: 1rem 0;
 }
+/* ペットリスト */
+.pets_list li{
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border: solid 1px $border-color ;
+}
+.pets_list li a {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  &:hover {
+    color: $font-color;
+  }
+}
+.pets_list li a:hover .pet_name{
+  color: $vivid-color;
+}
+.pets_list li h3,.pets_list li h4{
+  margin-bottom: 0;
+}
+.pets_list .left_column{
+  width: 104px;
+  padding-right:2rem;
+}
+.pets_list .left_column img{
+  display: block;
+  height: 104px;
+  width: 104px;
+  border-radius: 50%;
+  background: #ccc;
+}
+.pets_list .right_column{
+  display: block;
+  height: auto;
+}
+.pets_list .pet_name{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.pets_list .pet_species{
+  font-size: 1.4rem;
+  color: $font-color-light;
+}
+.pets_list .right_column span{
+  display: block;
+}
+.pets_list .right_column .pet_comment{
+  padding: 0.2rem 0 0.8rem;
+}
+.pets_list .right_column .owner{
+  display: flex;
+  flex-direction: row;
+  // margin-top: 0.6rem;
+}
+.pets_list .right_column .owner .owner_avatar{
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  background: #ccc;
+  border-radius: 50%;
+}
+.pets_list .right_column .owner .owner_name{
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+/* ペットプロフィール */
 .pets .pet_profile {
   overflow: hidden;
   padding: 3rem 0;
@@ -28,15 +105,16 @@ $border-color: #e0e0e0;
   padding-right: 4rem;
   line-height: 2.2;
 }
-.pet_profile .edit {
+.pet_profile .edit,.pet_profile .follow {
   display: table-cell;
   padding: 0;
   vertical-align: middle;
   line-height: 1;
 }
-.pet_profile .edit .button2{
+.pet_profile .edit .button2,.pet_profile .follow .button2{
   padding: 0.8rem 3rem;
 }
+
 .pet_profile .count {
   overflow: hidden;
   display: flex;

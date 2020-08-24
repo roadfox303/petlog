@@ -13,12 +13,27 @@
  *= require_tree .
  *= require_self
  */
-$font-color: #333333;
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #2B2D41;
+$font-color-light: #8D99AF;
 $font-placeholder: #cccccc;
+$border-color: #D4D8DA;
+$hover_box: #F2F5F6;
+
+
 body {
   margin: 0;
-  background-color: #f8f8f8;
+  background-color: $base-color;
   color: $font-color;
+}
+a {
+  color: $font-color;
+  transition:all 0.15s ease-out;
+  text-decoration: none;
 }
 ul {
   padding: 0;
@@ -92,4 +107,36 @@ input,textarea {
 .field_with_errors select,
 .field_with_errors textarea{
   border-color: #f00;
+}
+.hover_box {
+  transition:all 0.3s ease-out;
+  // &:hover {
+  //   background: $hover_box;
+  // }
+}
+
+/* ヘッダー */
+#top_nav{
+  background: #fff;
+  border-top: solid 1px $border-color;
+  border-bottom: solid 1px $border-color;
+}
+#top_nav .container{
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+}
+#top_logo{
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+}
+#top_nav .nav-bar {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin: 1.6rem 0;
+}
+#top_nav .nav-bar li{
+  margin-left: 2rem;
 }

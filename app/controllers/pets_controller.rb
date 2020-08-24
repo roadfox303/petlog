@@ -25,6 +25,17 @@ class PetsController < ApplicationController
   def edit
   end
 
+  def update
+    if @pet.update(pet_params)
+      redirect_to pet_path(@pet), notice: "「#{@pet.name}」のプロフィールを編集しました"
+    else
+      render :edit, notice: "「#{@pet.name}」のプロフィールを編集できませんでした"
+    end
+  end
+
+  def show
+  end
+
   private
 
   def pet_params

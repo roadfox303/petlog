@@ -1,0 +1,40 @@
+h1 ペットプロフィール
+- @pet.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{@pet.errors.count} 件のエラーがあります
+    ul
+    - @pet.errors.full_messages.each do |msg|
+      li #{msg}
+div.raw.user_profile
+  div.four.columns.left
+    div.avatar
+  div.eight.columns.right
+    div.raw
+      div.name #{@pet.name}
+      - if @pet.owner == current_user
+        div.edit
+          = link_to 'プロフィール編集', edit_pet_path(@pet), class:'button2 button-secondary'
+      - else
+        div.follow
+          = link_to 'フォロー', edit_pet_path(@pet), class:'button2 button-secondary'
+    div.species #{@pet.species}
+    ul.count
+      - if @pet.sex.present?
+        li #{@pet.sex}
+      li #{@pet.age} 歳
+      - if @pet.birthday.present?
+        li 誕生日 : #{@pet.birthday&.strftime("%Y年%-m月%-d日")}
+      - if @pet.join_day.present?
+        li お迎え日 : #{@pet.join_day&.strftime("%Y年%-m月%-d日")}
+    div.comment
+      h6 comment
+      p #{@pet.comment}
+div.raw.card_list
+  div.title
+    h5 ファミリーアニマル
+    span - 3
+div.raw.card_list
+  div.title
+    h5 フォローアニマル
+    span - 12
