@@ -1,0 +1,12 @@
+div.title
+  h5 #{list_title}
+  span … #{list.count} 人
+ul
+  - list.each do |bond|
+    li
+      = link_to user_path(bond.user) do
+        div.avatar
+          img
+        div.details
+          span.name #{bond.user.name}
+          span.relation_category #{bond.relation_category.title}

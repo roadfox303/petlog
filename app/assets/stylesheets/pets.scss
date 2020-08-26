@@ -1,0 +1,223 @@
+// Place all the styles related to the pets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #412B2D;
+$font-color-light: #8D99AF;
+$font-placeholder: #cccccc;
+$border-color: #DAD8D4;
+$hover_box: #F2F5F6;
+
+/* ペットリスト */
+.pets_list li{
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border: solid 1px $border-color ;
+}
+.pets_list li a {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  &:hover {
+    color: $font-color;
+  }
+}
+.pets_list li a:hover .pet_name{
+  color: $vivid-color;
+}
+.pets_list li h3,.pets_list li h4{
+  margin-bottom: 0;
+}
+.pets_list .left_column{
+  width: 104px;
+  padding-right:2rem;
+}
+.pets_list .left_column img{
+  display: block;
+  height: 104px;
+  width: 104px;
+  border-radius: 50%;
+  background: #ccc;
+}
+.pets_list .right_column{
+  display: block;
+  height: auto;
+}
+.pets_list .pet_name{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.pets_list .pet_species{
+  font-size: 1.4rem;
+  color: $font-color-light;
+}
+.pets_list .right_column span{
+  display: block;
+}
+.pets_list .right_column .pet_comment{
+  padding: 0.2rem 0 0.8rem;
+}
+.pets_list .right_column .owner,.pet_profile .owner{
+  display: flex;
+  flex-direction: row;
+  // margin-top: 0.6rem;
+}
+.pets_list .right_column .owner .owner_avatar,.pet_profile .owner .owner_avatar{
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  background: #ccc;
+  border-radius: 50%;
+}
+.pets_list .right_column .owner .owner_name,.pet_profile .owner .owner_name{
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+/* ペットプロフィール */
+.pets .pet_profile {
+  overflow: hidden;
+  padding: 3rem 0;
+}
+.pet_profile .left {
+
+}
+.pet_profile .avatar {
+  height: 152px;
+  width: 152px;
+  margin: auto;
+  background: #cccccc;
+  border-radius: 50%;
+}
+.pet_profile .right {
+
+}
+.pet_profile .name {
+  font-size: 2.2rem;
+  font-weight: bold;
+  display: table-cell;
+  padding-right: 4rem;
+  line-height: 2.2;
+}
+.pet_profile .edit,.pet_profile .follow {
+  display: table-cell;
+  padding: 0;
+  vertical-align: middle;
+  line-height: 1;
+}
+.pet_profile .edit a{
+  margin: 0 0.5rem;
+}
+.pet_profile .button2,.pet_profile .button2{
+  padding: 0.8rem 3rem;
+}
+
+.pet_profile .details,.pet_profile .count {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+.pet_profile .details li,.pet_profile .count li {
+  margin-right: 3rem;
+}
+.pet_profile .details li .number,.pet_profile .count li .number {
+  padding: 0 0.75rem;
+  font-weight: 600;
+}
+.pet_profile .owner {
+  margin-top: 2.4rem;
+}
+.pet_profile .owner h4 {
+  margin-bottom: 0;
+}
+.pet_profile .owner_avatar,.pet_profile .owner_name{
+  display: block;
+  float: left;
+}
+.pet_profile .comment {
+  margin: 4rem 6%;
+  padding: 2rem 0;
+  border-top: solid 1px $font-color;
+  border-bottom: solid 1px $font-color;
+  word-wrap: break-word;
+}
+.pet_profile .comment h6 {
+  margin-bottom: 1rem;
+}
+.pet_profile .comment textarea{
+  width: 100%;
+}
+.pet_profile .indication{
+  display: flex;
+  justify-content: center;
+}
+.card_list {
+  border-top: solid 1px $border-color;
+  padding: 2.4rem 0;
+}
+.card_list h6 {
+  display: block;
+}
+.card_list .title {
+  display: table;
+}
+.card_list .title h6, .card_list .title span {
+  display: table-cell;
+}
+.card_list ul,.card_list ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card_list li{
+  padding: 1%;
+  width: 33.3%;
+  box-sizing: border-box;
+}
+.card_list li a {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 2rem;
+  background: #fff;
+  // border: solid 1px $border-color;
+  border-radius: 8px;
+}
+.card_list li div{
+  float: left;
+}
+.card_list li .avatar{
+  width: 30%;
+  height: 100%;
+  background: #ccc;
+  border-radius: 50%;
+  margin-right: 8%;
+}
+.card_list li .details span{
+  display: block;
+}
+.card_list li .details .name{
+  font-size: 1.8rem;
+}
+.card_list li .details .relation_category{
+  font-size: 1.4rem;
+  color: $font-color-light;
+}
+.pet_profile select {
+  margin-right: 0.5rem;
+}
+.pet_profile input[type="text"] {
+  width: 100%;
+}
+.card_list .submit {
+  margin: auto;
+  display: block;
+}

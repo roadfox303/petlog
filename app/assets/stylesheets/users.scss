@@ -1,11 +1,18 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$border-color: #e0e0e0;
-.users h1 {
-  margin: 1rem 0;
-}
-.users .user_profile {
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #412B2D;
+$font-color-light: #8D99AF;
+$font-placeholder: #cccccc;
+$border-color: #DAD8D4;
+$hover_box: #F2F5F6;
+
+.user_profile {
   overflow: hidden;
   padding: 3rem 0;
 }
@@ -28,13 +35,13 @@ $border-color: #e0e0e0;
   padding-right: 4rem;
   line-height: 2.2;
 }
-.user_profile .edit {
+.user_profile .edit, .user_profile .follow {
   display: table-cell;
   padding: 0;
   vertical-align: middle;
   line-height: 1;
 }
-.user_profile .edit .button2{
+.user_profile .edit .button2, .user_profile .follow .button2{
   padding: 0.8rem 3rem;
 }
 .user_profile .count {

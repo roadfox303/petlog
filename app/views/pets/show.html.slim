@@ -1,0 +1,52 @@
+h1 ペットプロフィール
+- @pet.errors.any?
+  div.raw
+    div.error_explanation
+    h3 #{@pet.errors.count} 件のエラーがあります
+    ul
+    - @pet.errors.full_messages.each do |msg|
+      li #{msg}
+div.raw.pet_profile
+  div.four.columns.left
+    div.avatar
+  div.eight.columns.right
+    div.raw
+      div.name #{@pet.name}
+      - if @pet.owner == current_user
+        div.edit
+          = link_to '編集', edit_pet_path(@pet), class:'button2 button-secondary'
+          = link_to '削除', pet_path(@pet),method: 'delete', data: { confirm: "本当に「#{@pet.name}」 を削除しますか？" }, class:'button2 button-secondary'
+      - else
+        div.follow
+          = link_to 'フォロー', edit_pet_path(@pet), class:'button2 button-secondary'
+    div.species #{@pet.species}
+    ul.details
+      - if @pet.sex.present?
+        li.sex #{@pet.sex}
+      li.age #{@pet.age}
+      - if @pet.birthday.present?
+        li.birthday 誕生日 : #{@pet.birthday&.strftime("%Y年%-m月%-d日")}
+      - if @pet.join_day.present?
+        li.join_day お迎え日 : #{@pet.join_day&.strftime("%Y年%-m月%-d日")}
+    ul.count
+      li
+        span 投稿
+        span.number 34
+        span 件
+      li
+        span フォロワー
+        span.number #{@followers.count}
+        span 人
+    div.owner
+      = link_to user_path(@owner) do
+        div.owner_avatar
+        h4.owner_name #{@owner.name}
+  div.twelve.columns
+    div.comment #{@pet.comment}
+  div.twelve.columns.indication
+    - if @pet.intrust == true
+      div.button2.button-secondary 里親を募集しています
+div.raw.card_list#family_list
+  = render partial: 'card_list', locals: { list: @familys, list_title: 'ファミリーユーザー' }
+div.raw.card_list#follower_list
+  = render partial: 'card_list', locals: { list: @followers, list_title: 'フォロワーユーザー' }

@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_082511) do
+ActiveRecord::Schema.define(version: 2020_08_21_054230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bonds", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "relation_category_id"
+    t.index ["pet_id"], name: "index_bonds_on_pet_id"
+    t.index ["relation_category_id"], name: "index_bonds_on_relation_category_id"
+    t.index ["user_id"], name: "index_bonds_on_user_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "avatar"
+    t.string "species"
+    t.string "sex"
+    t.date "birthday"
+    t.date "join_day"
+    t.integer "join_age"
+    t.text "comment"
+    t.boolean "intrust", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["intrust"], name: "index_pets_on_intrust"
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "relation_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -26,4 +60,8 @@ ActiveRecord::Schema.define(version: 2020_08_14_082511) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bonds", "pets"
+  add_foreign_key "bonds", "relation_categories"
+  add_foreign_key "bonds", "users"
+  add_foreign_key "pets", "users"
 end
