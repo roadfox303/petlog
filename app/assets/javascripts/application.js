@@ -18,4 +18,8 @@
 //= require_tree .
 document.addEventListener('turbolinks:load', function() {
   autosize($('textarea'));
+  $('.card_list .avatar').autocircle();
+  $(window).on('resize', function(){
+    $('.card_list .avatar').autocircle();
+  });
 });

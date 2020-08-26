@@ -18,10 +18,11 @@ $middium-color: #8D99AF;
 $thema-color: #DE3A5D;
 $vivid-color: #FF436B;
 $dark-color: #B82C5C;
-$font-color: #2B2D41;
+$font-color: #412B2D;
 $font-color-light: #8D99AF;
 $font-placeholder: #cccccc;
-$border-color: #D4D8DA;
+$icon-color: #ff938b;
+$border-color: #DAD8D4;
 $hover_box: #F2F5F6;
 
 
@@ -29,11 +30,36 @@ body {
   margin: 0;
   background-color: $base-color;
   color: $font-color;
+  padding-top: 6rem;
 }
 a {
   color: $font-color;
   transition:all 0.15s ease-out;
   text-decoration: none;
+}
+h1 {
+  position: relative;/*相対位置*/
+  padding-left: 1.2em;/*アイコン分のスペース*/
+  padding-bottom: 1rem;
+  line-height: 1.4;/*行高*/
+  color: #7b6459;/*文字色*/
+  margin: 1.6rem 0;
+  border-bottom: dashed 2px $border-color;
+}
+h1:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f1b0";/*アイコンのユニコード*/
+  font-weight: 900;
+  position: absolute;/*絶対位置*/
+  font-size: 1em;/*サイズ*/
+  left: 0;/*アイコンの位置*/
+  top: 0;/*アイコンの位置*/
+  color: $icon-color; /*アイコン色*/
+}
+.card_list .title h5{
+  border-left: solid 5px $icon-color;
+  text-indent: 1rem;
+  margin-right: 1rem;
 }
 ul {
   padding: 0;
@@ -118,8 +144,11 @@ input,textarea {
 /* ヘッダー */
 #top_nav{
   background: #fff;
-  border-top: solid 1px $border-color;
   border-bottom: solid 1px $border-color;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 #top_nav .container{
   display: flex;
@@ -127,9 +156,11 @@ input,textarea {
   align-items: center;
 }
 #top_logo{
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
   position: absolute;
   left: 0;
+  color: #7b6459;
 }
 #top_nav .nav-bar {
   display: flex;

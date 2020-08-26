@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :bonds
   has_many :pets, through: :bonds, dependent: :destroy
+  attr_accessor :relation_category
 
   private
   def password_blank?

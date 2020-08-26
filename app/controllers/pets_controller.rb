@@ -34,6 +34,19 @@ class PetsController < ApplicationController
   end
 
   def show
+    @familys = @pet.family_users
+    @followers = @pet.follower_users
+    @owner = @pet.owner
+  end
+
+  def destroy
+    if check_owner?
+      @pet.destroy
+      redirect_to user_path(current_user), notice: "ペット「#{@pet.name}」を削除しました"
+    else
+      render pet_path(@pet), notice: "「#{@pet.name}」を削除する権限がありません"
+    end
+
   end
 
   private
@@ -54,6 +67,10 @@ class PetsController < ApplicationController
   def date_join(date)
     date.values.map { |value| return if value.empty? }
     Date.new date.values[0].to_i, date.values[1].to_i, date.values[2].to_i
+  end
+
+  def check_owner?
+    @pet.owner == current_user
   end
 
 end
