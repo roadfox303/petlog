@@ -1,0 +1,6 @@
+div.raw
+  div.error_explanation
+    h3 #{object.errors.count} 件のエラーがあります
+    ul
+    - object.errors.full_messages.each do |msg|
+      li #{msg}

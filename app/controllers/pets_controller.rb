@@ -37,6 +37,7 @@ class PetsController < ApplicationController
     @familys = @pet.family_users
     @followers = @pet.follower_users
     @owner = @pet.owner
+    @bond = current_user.bonds.find_by(pet_id: @pet, relation_category_id: 1)
   end
 
   def destroy

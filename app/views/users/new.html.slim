@@ -1,11 +1,6 @@
 h1 ユーザー登録
 - @user.errors.any?
-  div.raw
-    div.error_explanation
-    h3 #{@user.errors.count} 件のエラーがあります
-    ul
-    - @user.errors.full_messages.each do |msg|
-      li #{msg}
+  = render partial: 'shared/errors', locals: { object: @user }
 div.raw
   = form_with model: @user, local:true do |f|
     .form-group

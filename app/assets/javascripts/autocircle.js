@@ -7,6 +7,4 @@ $.fn.autocircle = function( options ) {
 
 // Plugin defaults – added as a property on our plugin function.
 $.fn.autocircle.defaults = {
-  foreground: "red",
-  background: "yellow"
 };

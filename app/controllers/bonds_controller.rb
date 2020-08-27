@@ -1,13 +1,18 @@
 class BondsController < ApplicationController
   def create
-    binding.pry
-    # bons = current_user.bons.find_or_create_by(pet_id: params[:pet_id])
-    # redirect_to user_path(current_user), notice: 'Nice!しました'
+    current_user.bonds.find_or_create_by(bond_params)
+    redirect_to pet_path(bond_params[:pet_id]), notice: 'フォローしました'
   end
 
   def destroy
-    # back = Nice.find(params[:id]).blog_id
-    # nice = current_user.nices.find_by(id: params[:id]).destroy
-    # redirect_to blog_path(back), notice: 'Nice!を取り消しました'
+    back = Bond.find(bond_params[:id]).pet_id
+    current_user.bonds.find(bond_params[:id]).destroy
+    redirect_to pet_path(back), notice: 'フォローを解除しました'
+  end
+
+  private
+
+  def bond_params
+    params.permit(:id, :pet_id, :user_id, :relation_category_id)
   end
 end
