@@ -1,10 +1,5 @@
 - pet.errors.any?
-  div.raw
-    div.error_explanation
-    h3 #{pet.errors.count} 件のエラーがあります
-    ul
-    - pet.errors.full_messages.each do |msg|
-      li #{msg}
+  = render partial: 'shared/errors', locals: { object: pet }
 = form_with model: pet, local:true do |f|
   div.raw.pet_profile
     div.four.columns.left

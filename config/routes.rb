@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :bonds, only: [:create, :edit, :update, :destroy]
+    # resources :bonds, only: [:create, :edit, :update, :destroy]
   end
 
   resources :pets do
     # member do
     #   get :bonds
     # end
-    resources :bonds, only: [:create, :edit, :update, :destroy]
+    # resources :bonds, only: [:create, :edit, :update, :destroy]
   end
+  resources :bonds, only: [:create, :edit, :update, :destroy]
 end

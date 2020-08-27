@@ -29,9 +29,7 @@
     </div>
     <div class="container">
       <% if flash.notice.present? %>
-      <div>
-        <%= flash.notice %>
-      </div>
+      <div class="notice"><%= flash.notice %></div>
       <% end %>
       <%= yield %>
     <div>

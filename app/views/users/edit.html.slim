@@ -1,11 +1,6 @@
 h1 ユーザープロフィール
 - @user.errors.any?
-  div.raw
-    div.error_explanation
-    h3 #{@user.errors.count} 件のエラーがあります
-    ul
-    - @user.errors.full_messages.each do |msg|
-      li #{msg}
+  = render partial: 'shared/errors', locals: { object: @user }
 = form_with model: @user, local:true do |f|
   div.raw.user_profile
     div.four.columns.left
