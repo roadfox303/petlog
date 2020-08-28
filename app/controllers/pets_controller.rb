@@ -5,7 +5,7 @@ class PetsController < ApplicationController
   include BondGenerate
 
   def index
-    @pets = Pet.all
+    @pets = Pet.all.includes(:owner)
   end
 
   def new
@@ -23,10 +23,12 @@ class PetsController < ApplicationController
   end
 
   def edit
+    redirect_to pet_path(@pet) unless check_owner?
   end
 
   def update
-    if @pet.update(pet_params)
+    if check_owner?
+      @pet.update(pet_params)
       redirect_to pet_path(@pet), notice: "「#{@pet.name}」のプロフィールを編集しました"
     else
       render :edit, notice: "「#{@pet.name}」のプロフィールを編集できませんでした"
@@ -53,7 +55,12 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :avatar, :species, :sex, :birthday, :join_day, :join_age, :comment, :intrust, :user_id)
+    params.require(:pet).permit(:name, :species, :sex, :birthday, :join_day, :join_age, :comment, :intrust, :user_id,
+      :image_x,
+      :image_y,
+      :image_w,
+      :image_h,
+      :avatar,)
   end
 
   def set_id

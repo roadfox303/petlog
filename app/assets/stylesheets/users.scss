@@ -23,7 +23,7 @@ $hover_box: #F2F5F6;
   height: 152px;
   width: 152px;
   margin: auto;
-  background: #cccccc;
+  background: $border-color;
   border-radius: 50%;
 }
 .user_profile .right {

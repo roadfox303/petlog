@@ -38,12 +38,12 @@ $hover_box: #F2F5F6;
   width: 104px;
   padding-right:2rem;
 }
-.pets_list .left_column img{
+.pets_list .left_column img,.pets_list .left_column div{
   display: block;
   height: 104px;
   width: 104px;
   border-radius: 50%;
-  background: #ccc;
+  background: $border-color;
 }
 .pets_list .right_column{
   display: block;
@@ -72,12 +72,18 @@ $hover_box: #F2F5F6;
   width: 24px;
   height: 24px;
   margin-right: 1rem;
-  background: #ccc;
+  background: $border-color;
   border-radius: 50%;
+  overflow: hidden;
+  border: solid 2px $border-color;
+}
+.owner_avatar img{
+  width: 100%;
+  height: 100%;
 }
 .pets_list .right_column .owner .owner_name,.pet_profile .owner .owner_name{
   font-size: 1.6rem;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 /* ペットプロフィール */
@@ -92,7 +98,7 @@ $hover_box: #F2F5F6;
   height: 152px;
   width: 152px;
   margin: auto;
-  background: #cccccc;
+  background: $border-color;
   border-radius: 50%;
 }
 .pet_profile .right {
@@ -197,15 +203,20 @@ $hover_box: #F2F5F6;
 .card_list li .avatar{
   width: 30%;
   height: 100%;
-  background: #ccc;
+  background: $border-color;
   border-radius: 50%;
   margin-right: 8%;
+}
+.card_list li .details{
+  width: 70%;
 }
 .card_list li .details span{
   display: block;
 }
 .card_list li .details .name{
   font-size: 1.8rem;
+  line-height: 1.2;
+  word-break:break-all;
 }
 .card_list li .details .relation_category{
   font-size: 1.4rem;

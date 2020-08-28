@@ -5,7 +5,10 @@ div.raw.pets_list
       li.hover_box
         = link_to pet_path(pet), id: "pet_#{pet.id}" do
           div.left_column
-            img
+            - if pet.avatar && pet.avatar.url
+              = image_tag (pet.avatar.avatar_m.url) if pet.avatar && pet.avatar.url
+            - else
+              div.empty_pet_avatar
           div.right_column
             h3.pet_name #{pet.name}
             span.pet_species #{pet.species}
@@ -15,4 +18,5 @@ div.raw.pets_list
               = truncate(pet.comment, :length => 120)
             div.owner
               div.owner_avatar
+                = image_tag (pet.owner.avatar.avatar_s.url) if pet.owner.avatar && pet.owner.avatar.url
               h4.owner_name #{pet.owner&.name}
