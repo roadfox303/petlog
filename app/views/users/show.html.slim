@@ -8,30 +8,45 @@ div.raw.user_profile
   div.eight.columns.right
     div.raw
       div.name #{@user.name}
-      - if @user == current_user
+      - if @authority
         div.edit
           = link_to 'プロフィール編集', edit_user_path(current_user), class:'button2 button-secondary'
+      - else
+        div.follow
+          -if relation = current_user.following?(@user)
+            = link_to relationship_path(relation),method: 'delete', class:'button2 button-secondary' do
+              i.fas.fa-address-book
+              span フォロー解除
+          - else
+            = link_to relationships_path(follower_id: current_user, followed_id: @user, relation_category_id: 1),method: 'post', class:'button2 button-secondary' do
+              i.far.fa-address-book
+              span フォロー
     ul.count
       li
         span 投稿
         span.number 34
         span 件
       li
-        span フォロワー
-        span.number 14
-        span 人
+        = link_to follower_user_path do
+          span フォロワー
+          span.number #{@followers.count}
+          span 人
       li
-        span フォロー
-        span.number 4
-        span 人
+        = link_to following_user_path do
+          span フォロー
+          span.number #{@followings.count}
+          span 人
     div.comment
       h6 comment
       p #{@user.comment}
-div.raw.card_list
-  div.title
-    h5 ファミリーアニマル
-    span … 3
-div.raw.card_list
-  div.title
-    h5 フォローアニマル
-    span … 12
+- if @authority
+  div.raw#user_menu_nav
+    ul
+      li
+        = link_to 'フォローユーザー一覧', following_user_path, class:'button2'
+      li
+        = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'
+div.raw.card_list#family_list
+  = render partial: 'card_list', locals: { list: @family_pets, list_title: 'ファミリーペット' }
+div.raw.card_list#follower_list
+  = render partial: 'card_list', locals: { list: @follow_pets, list_title: 'フォローアニマル' }

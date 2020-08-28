@@ -36,8 +36,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [60, 60]
   end
 
-  process resize_to_fill: [1920, 1080]
-
   private
 
     def crop

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_id, only: [:show, :edit, :update, :destroy]
+  before_action :set_id, only: [:show, :edit, :update, :destroy, :follower, :following]
   skip_before_action :login_required
 
   def index
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @followers = @user.followers
+    @followings = @user.following
+    @family_pets = @user.family_pets.order(id: "ASC")
+    @follow_pets = @user.follow_pets.order(id: "DESC")
+    @authority = auth_user?
   end
 
   def edit
@@ -35,6 +40,14 @@ class UsersController < ApplicationController
     else
       render :edit, notice: "「#{@user.name}」のプロフィールを編集できませんでした"
     end
+  end
+
+  def follower
+    @followers = @user.followers
+  end
+
+  def following
+    @followings = @user.following
   end
 
   private

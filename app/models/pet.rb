@@ -28,11 +28,11 @@ class Pet < ApplicationRecord
   end
 
   def family_users
-    bonds_user([4,3])
+    bonds_users([4,3])
   end
 
   def follower_users
-    bonds_user([2,1])
+    bonds_users([2,1])
   end
 
   private
@@ -54,7 +54,7 @@ class Pet < ApplicationRecord
     return ((Date.today - birthdayStr).to_i / 30).floor
   end
 
-  def bonds_user(relation)
+  def bonds_users(relation)
     self.bonds.includes(:user, :relation_category).where(relation_category_id: relation)
   end
 end

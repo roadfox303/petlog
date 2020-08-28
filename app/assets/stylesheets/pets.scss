@@ -95,8 +95,8 @@ $hover_box: #F2F5F6;
 
 }
 .pet_profile .avatar {
-  height: 152px;
-  width: 152px;
+  height: 192px;
+  width: 192px;
   margin: auto;
   background: $border-color;
   border-radius: 50%;
@@ -156,6 +156,11 @@ $hover_box: #F2F5F6;
   border-bottom: solid 1px $font-color;
   word-wrap: break-word;
 }
+#edit_profile .comment{
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border: none;
+}
 .pet_profile .comment h6 {
   margin-bottom: 1rem;
 }
@@ -167,7 +172,7 @@ $hover_box: #F2F5F6;
   justify-content: center;
 }
 .card_list {
-  border-top: solid 1px $border-color;
+  border-top: dashed 1px $border-color;
   padding: 2.4rem 0;
 }
 .card_list h6 {
