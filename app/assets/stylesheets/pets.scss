@@ -95,8 +95,8 @@ $hover_box: #F2F5F6;
 
 }
 .pet_profile .avatar {
-  height: 152px;
-  width: 152px;
+  height: 192px;
+  width: 192px;
   margin: auto;
   background: $border-color;
   border-radius: 50%;
@@ -167,7 +167,7 @@ $hover_box: #F2F5F6;
   justify-content: center;
 }
 .card_list {
-  border-top: solid 1px $border-color;
+  border-top: dashed 1px $border-color;
   padding: 2.4rem 0;
 }
 .card_list h6 {
