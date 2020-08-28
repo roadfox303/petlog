@@ -9,7 +9,10 @@ Rails.application.routes.draw do
       get :bonds
     end
     member do
-      get :relationships
+      get :follower
+    end
+    member do
+      get :following
     end
   end
 

@@ -41,7 +41,7 @@ class User < ApplicationRecord
   def following_users
     active_relation_users([2,1])
   end
-  
+
   def family_pets
     bonds_pets([4,3])
   end

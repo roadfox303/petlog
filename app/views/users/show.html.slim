@@ -8,7 +8,7 @@ div.raw.user_profile
   div.eight.columns.right
     div.raw
       div.name #{@user.name}
-      - if @user == current_user
+      - if @authority
         div.edit
           = link_to 'プロフィール編集', edit_user_path(current_user), class:'button2 button-secondary'
       - else
@@ -27,16 +27,25 @@ div.raw.user_profile
         span.number 34
         span 件
       li
-        span フォロワー
-        span.number #{@followers.count}
-        span 人
+        = link_to follower_user_path do
+          span フォロワー
+          span.number #{@followers.count}
+          span 人
       li
-        span フォロー
-        span.number #{@followings.count}
-        span 人
+        = link_to following_user_path do
+          span フォロー
+          span.number #{@followings.count}
+          span 人
     div.comment
       h6 comment
       p #{@user.comment}
+- if @authority
+  div.raw#user_menu_nav
+    ul
+      li
+        = link_to 'フォローユーザー一覧', following_user_path, class:'button2'
+      li
+        = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'
 div.raw.card_list#family_list
   = render partial: 'card_list', locals: { list: @family_pets, list_title: 'ファミリーペット' }
 div.raw.card_list#follower_list

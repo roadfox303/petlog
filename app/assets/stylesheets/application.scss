@@ -56,7 +56,7 @@ h1:before {
   top: 0;/*アイコンの位置*/
   color: $icon-color; /*アイコン色*/
 }
-.card_list .title h5{
+.card_list .title h5,.raw_list .title h5{
   border-left: solid 5px $icon-color;
   text-indent: 1rem;
   margin-right: 1rem;
