@@ -6,6 +6,12 @@ class Pet < ApplicationRecord
   has_many :users, through: :bonds, dependent: :destroy
   belongs_to :owner, class_name: "User",foreign_key: "user_id"
 
+  mount_uploader :avatar, ImageUploader
+  attr_accessor :image_x
+  attr_accessor :image_y
+  attr_accessor :image_w
+  attr_accessor :image_h
+
   def age
     if self.birthday
       age = calc_age(self.birthday)

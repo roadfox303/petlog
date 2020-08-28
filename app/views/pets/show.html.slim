@@ -4,6 +4,7 @@ h1 ペットプロフィール
 div.raw.pet_profile
   div.four.columns.left
     div.avatar
+      = image_tag (@pet.avatar.avatar_m.url) if @pet.avatar && @pet.avatar.url
   div.eight.columns.right
     div.raw
       div.name #{@pet.name}
@@ -50,6 +51,7 @@ div.raw.pet_profile
     div.owner
       = link_to user_path(@owner) do
         div.owner_avatar
+          = image_tag (@owner.avatar.avatar_s.url) if @owner.avatar && @owner.avatar.url
         h4.owner_name #{@owner.name}
   div.twelve.columns
     div.comment #{@pet.comment}

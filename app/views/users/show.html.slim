@@ -4,6 +4,7 @@ h1 ユーザープロフィール
 div.raw.user_profile
   div.four.columns.left
     div.avatar
+      = image_tag (@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
   div.eight.columns.right
     div.raw
       div.name #{@user.name}

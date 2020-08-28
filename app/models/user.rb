@@ -10,6 +10,12 @@ class User < ApplicationRecord
   has_many :pets, through: :bonds, dependent: :destroy
   attr_accessor :relation_category
 
+  mount_uploader :avatar, ImageUploader
+  attr_accessor :image_x
+  attr_accessor :image_y
+  attr_accessor :image_w
+  attr_accessor :image_h
+
   private
   def password_blank?
     password.blank?

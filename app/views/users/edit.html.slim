@@ -1,22 +1,35 @@
 h1 ユーザープロフィール
 - @user.errors.any?
   = render partial: 'shared/errors', locals: { object: @user }
+= content_tag(:div, id:'cropper', style: "display: none;")
+  div#img_box
+  button#crop_enter 確定
 = form_with model: @user, local:true do |f|
   div.raw.user_profile
     div.four.columns.left
       div.avatar
+        div#img_field
+          = image_tag(@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
+      = f.label :avatar
+        span.button2.button-secondary#avatar_btn プロフィール画像
+        = f.file_field :avatar, placeholder:"プロフィール画像", class: "image_form", id:'user_avatar'
+      = f.hidden_field :avatar_cache
+      = f.hidden_field :image_x, id:'img_x'
+      = f.hidden_field :image_y, id:'img_y'
+      = f.hidden_field :image_w, id:'img_w'
+      = f.hidden_field :image_h, id:'img_h'
     div.eight.columns.right
       div.raw
         = f.label :name
-        = f.text_field :name, placeholder:"ユーザーネーム", id: 'sign_up_name'
+        = f.text_field :name, placeholder:"ユーザーネーム", id: 'user_name'
         = f.label :email
-        = f.email_field :email, id: 'sign_up_email'
+        = f.email_field :email, id: 'user_email'
         = f.label :password
-        = f.password_field :password, id: 'sign_up_password'
+        = f.password_field :password, id: 'user_password'
         = f.label :password_confirmation
-        = f.password_field :password_confirmation, id: 'sign_up_password_confirmation'
+        = f.password_field :password_confirmation, id: 'user_password_confirmation'
       div.comment
         = f.label :comment
-        = f.text_area :comment, placeholder:"コメント"
+        = f.text_area :comment, placeholder:"コメント", id:'user_comment'
   div.raw.card_list
     = f.submit '登録する' , class:'button-primary submit'

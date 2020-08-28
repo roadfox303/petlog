@@ -1,9 +1,22 @@
 - pet.errors.any?
   = render partial: 'shared/errors', locals: { object: pet }
+= content_tag(:div, id:'cropper', style: "display: none;")
+  div#img_box
+  button#crop_enter 確定
 = form_with model: pet, local:true do |f|
   div.raw.pet_profile
     div.four.columns.left
       div.avatar
+        div#img_field
+          = image_tag(pet.avatar.avatar_m.url) if pet.avatar && pet.avatar.url
+      = f.label :avatar
+        span.button2.button-secondary#avatar_btn プロフィール画像
+        = f.file_field :avatar, placeholder:"プロフィール画像", class: "image_form", id:'pet_avatar'
+      = f.hidden_field :avatar_cache
+      = f.hidden_field :image_x, id:'img_x'
+      = f.hidden_field :image_y, id:'img_y'
+      = f.hidden_field :image_w, id:'img_w'
+      = f.hidden_field :image_h, id:'img_h'
     div.eight.columns.right
       div.raw
         = f.label :name

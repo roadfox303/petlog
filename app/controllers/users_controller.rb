@@ -25,9 +25,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    redirect_to user_path(@user) unless auth_user?
   end
 
   def update
+    redirect_to user_path(@user) unless auth_user?
     if @user.update(user_params)
       redirect_to user_path(current_user), notice: "「#{@user.name}」のプロフィールを編集しました"
     else
@@ -38,10 +40,19 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :avatar, :comment, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :comment, :password, :password_confirmation,
+      :image_x,
+      :image_y,
+      :image_w,
+      :image_h,
+      :avatar,)
   end
 
   def set_id
     @user = User.find(params[:id])
+  end
+
+  def auth_user?
+    @user == current_user
   end
 end
