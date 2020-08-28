@@ -34,9 +34,37 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id)
   end
 
+  def follower_users
+    passive_relation_users([2,1])
+  end
+
+  def following_users
+    active_relation_users([2,1])
+  end
+  
+  def family_pets
+    bonds_pets([4,3])
+  end
+
+  def follow_pets
+    bonds_pets([2,1])
+  end
+
   private
   def password_blank?
     password.blank?
+  end
+
+  def active_relation_users(relation)
+    self.active_relationships.includes(:user, :relation_category).where(relation_category_id: relation)
+  end
+
+  def passive_relation_users(relation)
+    self.passive_relationships.includes(:user, :relation_category).where(relation_category_id: relation)
+  end
+
+  def bonds_pets(relation)
+    self.bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
   end
 
 end

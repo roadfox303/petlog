@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @followers = @user.followers
+    @followings = @user.following
+    @family_pets = @user.family_pets.order(id: "ASC")
+    @follow_pets = @user.follow_pets.order(id: "DESC")
   end
 
   def edit
