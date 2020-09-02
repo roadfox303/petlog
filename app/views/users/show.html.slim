@@ -29,12 +29,12 @@ div.raw.user_profile
       li
         = link_to follower_user_path do
           span フォロワー
-          span.number #{@followers.count}
+          span.number #{@followers.size}
           span 人
       li
         = link_to following_user_path do
           span フォロー
-          span.number #{@followings.count}
+          span.number #{@followings.size}
           span 人
     div.comment
       h6 comment

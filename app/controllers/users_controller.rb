@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @followers = @user.followers
-    @followings = @user.following
+    @followings = @user.followings
     @family_pets = @user.family_pets.order(id: "ASC")
     @follow_pets = @user.follow_pets.order(id: "DESC")
     @authority = auth_user?
@@ -43,11 +43,17 @@ class UsersController < ApplicationController
   end
 
   def follower
-    @followers = @user.followers
+    @followers = @user.follower_users
+    @mutual_relationships = (current_user.following_users & current_user.follower_users).map do |user|
+      [user.id, user.relation_category]
+    end
   end
 
   def following
-    @followings = @user.following
+    @followings = @user.following_users
+    @mutual_relationships = (current_user.follower_users & current_user.following_users).map do |user|
+      [user.id, user.relation_category]
+    end
   end
 
   private

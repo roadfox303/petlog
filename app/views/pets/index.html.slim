@@ -20,3 +20,4 @@ div.raw.pets_list
               div.owner_avatar
                 = image_tag (pet.owner.avatar.avatar_s.url) if pet.owner.avatar && pet.owner.avatar.url
               h4.owner_name #{pet.owner&.name}
+            div #{pet.bonds.size}

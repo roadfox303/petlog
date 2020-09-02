@@ -46,7 +46,7 @@ div.raw.pet_profile
       li
         i.fas.fa-heart
         span フォロワー
-        span.number #{@followers.count}
+        span.number #{@followers.size}
         span 人
     div.owner
       = link_to user_path(@owner) do

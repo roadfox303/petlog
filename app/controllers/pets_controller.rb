@@ -5,7 +5,8 @@ class PetsController < ApplicationController
   include BondGenerate
 
   def index
-    @pets = Pet.all.includes(:owner)
+    @pets = Pet.all.includes(:owner, :bonds)
+    # @pets = Pet.all.includes(:owner)
   end
 
   def new
@@ -39,7 +40,7 @@ class PetsController < ApplicationController
     @familys = @pet.family_users
     @followers = @pet.follower_users
     @owner = @pet.owner
-    @bond = current_user.bonds.find_by(pet_id: @pet, relation_category_id: 1)
+    @bond = current_user.bonds.find_by(pet_id: @pet, relation_category_id: 1) unless current_user == @owner
   end
 
   def destroy
