@@ -60,11 +60,11 @@ class User < ApplicationRecord
   end
 
   def active_relations
-    self.active_relationships.includes(:followed, :relation_category).order(id: "DESC")
+    self.active_relationships.includes(:followed, :relation_category).order(updated_at: "DESC")
   end
 
   def passive_relations
-    self.passive_relationships.includes(:follower, :relation_category).order(id: "DESC")
+    self.passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
   end
 
   private

@@ -2,24 +2,21 @@ div.raw.raw_list
   div.title
     h5 #{list_title}
     span … #{list.size} 人
-div.raw.users_list
+div.raw.users_list#relation_users
   ul
     - list.each do |user|
       li.hover_box
-        = link_to user_path(user), id: "user_#{user.id}" do
-          div.left_column
+        div.left_column
+          = link_to user_path(user), id: "user_#{user.id}" do
             - if user.avatar && user.avatar.url
               = image_tag (user.avatar.avatar_m.url) if user.avatar && user.avatar.url
             - else
               div.empty_user_avatar
-          div.right_column
+        div.right_column
+          = link_to user_path(user), id: "user_#{user.id}" do
             h3.user_name #{user.name}
-            span.user_comment
-              -if user.comment.present?
-                i.fas.fa-comment
-              = truncate(user.comment, :length => 120)
-            span #{user.relation_category}
-            span #{@mutual_relationships.find{|arr| arr[0] == user.id }}
-            = generate_relation_btn(user, list_type.to_sym)
-
-            / - relation(user,list_type)
+          span.user_comment
+            -if user.comment.present?
+              i.fas.fa-comment
+            = truncate(user.comment, :length => 120)
+          = generate_relation_btn(user, list_type.to_sym)

@@ -3,20 +3,19 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  # post '/users/:id/follower', to: 'users#follower'
 
   resources :users do
     member do
       get :bonds
-    end
-    member do
       get :follower
-    end
-    member do
+      # post :follower
       get :following
+      # post :follow_create
     end
   end
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :update, :destroy]
 
   resources :pets do
     member do

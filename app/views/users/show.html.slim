@@ -14,7 +14,7 @@ div.raw.user_profile
       - else
         div.follow
           -if relation = current_user.following?(@user)
-            = link_to relationship_path(relation),method: 'delete', class:'button2 button-secondary' do
+            = link_to relationship_path(followed_id:@user),method: 'delete', class:'button2 button-secondary' do
               i.fas.fa-address-book
               span フォロー解除
           - else

@@ -48,6 +48,7 @@ $hover_box: #F2F5F6;
 .pets_list .right_column{
   display: block;
   height: auto;
+  width:100%;
 }
 .pets_list .pet_name{
   font-size: 1.8rem;
@@ -84,6 +85,21 @@ $hover_box: #F2F5F6;
 .pets_list .right_column .owner .owner_name,.pet_profile .owner .owner_name{
   font-size: 1.6rem;
   line-height: 1.8;
+}
+.pets_list .status{
+  display: flex;
+  align-items: center;
+  margin: 0 ;
+  width: 100%;
+}
+.pets_list .status li{
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 30%;
+}
+.pets_list .status li i,.pets_list .status li span{
+  display: inline;
 }
 
 /* ペットプロフィール */

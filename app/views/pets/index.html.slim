@@ -16,8 +16,12 @@ div.raw.pets_list
               -if pet.comment.present?
                 i.fas.fa-comment
               = truncate(pet.comment, :length => 120)
-            div.owner
-              div.owner_avatar
-                = image_tag (pet.owner.avatar.avatar_s.url) if pet.owner.avatar && pet.owner.avatar.url
-              h4.owner_name #{pet.owner&.name}
-            div #{pet.bonds.size}
+            ul.status
+              li
+                div.owner
+                  div.owner_avatar
+                    = image_tag (pet.owner.avatar.avatar_s.url) if pet.owner.avatar && pet.owner.avatar.url
+                  h4.owner_name #{pet.owner&.name}
+              li
+                i.fas.fa-heart
+                span #{pet.bonds.size}
