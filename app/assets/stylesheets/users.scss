@@ -169,3 +169,48 @@ $hover_box: #F2F5F6;
   border-left: solid 0.5rem $thema-color;
   background: #fff;
 }
+
+
+#relation_users .hover_box{
+  display: flex;
+}
+#relation_users .right_column{
+  width: 100%;
+}
+#relation_users .relation_box{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-top: 1px dashed $border-color;
+  padding-top: 1rem;
+}
+#relation_users .relation_box form{
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+#relation_users .relation_box i{
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+#relation_users .button2{
+  display: block;
+  padding: 0.5rem 2rem;
+  width: 13rem;
+  margin-right: 1rem;
+}
+#relation_users .relation_comment{
+  width: 18rem;
+}
+.color_receive_follow{
+  color: #bbbbbb;
+}
+.color_send_family{
+  color: #62c1f0;
+}
+.color_receive_family{
+  color: #ffc45e;
+}
+.color_family{
+  color:$vivid-color;
+}

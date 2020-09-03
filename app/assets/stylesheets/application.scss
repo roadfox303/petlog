@@ -25,7 +25,9 @@ $icon-color: #ff938b;
 $border-color: #DAD8D4;
 $hover_box: #F2F5F6;
 
-
+// html {
+//   background: #fff;
+// }
 body {
   margin: 0;
   background-color: $base-color;
@@ -60,6 +62,9 @@ h1:before {
   border-left: solid 5px $icon-color;
   text-indent: 1rem;
   margin-right: 1rem;
+}
+.card_list li a {
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
 }
 ul {
   padding: 0;
