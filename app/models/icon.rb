@@ -2,6 +2,8 @@ class Icon < ApplicationRecord
   has_many :icon_animals, dependent: :destroy
   has_many :icon_cares, dependent: :destroy
   has_many :icon_events, dependent: :destroy
+  
+  has_many :record_categories
 end
 
 class IconEvent < Icon

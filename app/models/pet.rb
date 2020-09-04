@@ -6,6 +6,8 @@ class Pet < ApplicationRecord
   has_many :users, through: :bonds, dependent: :destroy
   belongs_to :owner, class_name: "User",foreign_key: "user_id"
 
+  has_many :record_categories, dependent: :destroy
+
   mount_uploader :avatar, ImageUploader
   attr_accessor :image_x
   attr_accessor :image_y
