@@ -10,7 +10,10 @@ div.raw.user_profile
       div.name #{@user.name}
       - if @authority
         div.edit
-          = link_to 'プロフィール編集', edit_user_path(current_user), class:'button2 button-secondary'
+          = link_to edit_user_path(current_user), class:'button2 button-secondary' do
+            i.fas.fa-user-edit
+            span プロフィール編集
+          end
       - else
         div.follow
           -if relation = current_user.following?(@user)
