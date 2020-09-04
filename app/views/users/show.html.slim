@@ -43,6 +43,8 @@ div.raw.user_profile
   div.raw#user_menu_nav
     ul
       li
+        = link_to 'ペット登録', new_pet_path, class:'button2'
+      li
         = link_to 'フォローユーザー一覧', following_user_path, class:'button2'
       li
         = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'

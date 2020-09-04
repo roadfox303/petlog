@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     @followers = @user.followers
     @followings = @user.followings
     @family_pets = @user.family_pets.order(id: "ASC")
-    @follow_pets = @user.follow_pets.order(id: "DESC")
+    # @follow_pets = @user.follow_pets.order(id: "DESC")
+    @follow_pets = @user.follow_pets.includes(pet: :owner).order(id: "DESC")
     @authority = auth_user?
   end
 

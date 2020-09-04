@@ -28,7 +28,7 @@ $hover_box: #F2F5F6;
     color: $font-color;
   }
 }
-.pets_list li a:hover .pet_name{
+.pets_list li a:hover{
   color: $vivid-color;
 }
 .pets_list li h3,.pets_list li h4{
@@ -233,12 +233,14 @@ $hover_box: #F2F5F6;
 }
 .card_list li .details span{
   display: block;
+  font-size: 1.4rem;
 }
 .card_list li .details .name{
   font-size: 1.8rem;
   line-height: 1.2;
   word-break:break-all;
 }
+
 .card_list li .details .relation_category{
   font-size: 1.4rem;
   color: $font-color-light;
