@@ -2,11 +2,11 @@ $(document).on('turbolinks:load', function() {
   let dataController = $('body').attr('data-controller');
   let dataAction = $('body').attr('data-action');
 
-  if (dataController == 'pets' && (dataAction == 'new' || dataAction == 'create')) {
+  if (dataController == 'pets' && (dataAction == 'new' || dataAction == 'create' || dataAction == 'edit' || dataAction == 'update')) {
     let $birthday = $('#birthday_birthday_1i,#birthday_birthday_2i,#birthday_birthday_3i');
     let birthdayArray = ["","",""];
 
-    if (dataAction == 'create' && $birthday.val() != ""){
+    if ($birthday.val() != ""){
       disable_JoinAge();
     }
 

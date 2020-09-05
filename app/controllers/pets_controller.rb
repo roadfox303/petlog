@@ -1,12 +1,10 @@
 class PetsController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy]
-  # before_action :owner_check, only: [:edit, :update, :destroy]
   before_action :params_modifi, only: [:create, :update]
   include BondGenerate
 
   def index
     @pets = Pet.all.includes(:owner, :bonds)
-    # @pets = Pet.all.includes(:owner)
   end
 
   def new
@@ -28,11 +26,14 @@ class PetsController < ApplicationController
   end
 
   def update
-    if check_owner?
-      @pet.update(pet_params)
+    unless check_owner?
+      render :edit, notice: "「#{@pet.name}」の編集はできません"
+    end
+
+    if @pet.update(pet_params)
       redirect_to pet_path(@pet), notice: "「#{@pet.name}」のプロフィールを編集しました"
     else
-      render :edit, notice: "「#{@pet.name}」のプロフィールを編集できませんでした"
+      render :edit
     end
   end
 

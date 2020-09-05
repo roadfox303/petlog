@@ -15,15 +15,15 @@ class Pet < ApplicationRecord
   attr_accessor :image_h
 
   def age
-    if self.birthday
-      age = calc_age(self.birthday)
+    if birthday
+      age = calc_age(birthday)
       if age > 0
         "#{age} 歳"
       else
-        "#{calc_month(self.birthday)} ヶ月"
+        "#{calc_month(birthday)} ヶ月"
       end
-    elsif self.join_day && self.join_age
-      "#{calc_age(self.join_day) + self.join_age} 歳"
+    elsif join_day && join_age
+      "#{calc_age(join_day) + join_age} 歳"
     else
       "--"
     end
@@ -57,6 +57,6 @@ class Pet < ApplicationRecord
   end
 
   def bonds_users(relation)
-    self.bonds.includes(:user, :relation_category).where(relation_category_id: relation)
+    bonds.includes(:user, :relation_category).where(relation_category_id: relation)
   end
 end

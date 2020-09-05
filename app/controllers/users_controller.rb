@@ -57,13 +57,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def follow_create
-    binding.pry
-  end
-
-  def follow_cdestroy
-  end
-
   private
 
   def user_params

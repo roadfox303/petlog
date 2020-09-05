@@ -3,10 +3,10 @@ class Relationship < ApplicationRecord
   belongs_to :follower, class_name: "User"
   belongs_to :relation_category
 
-  def edit_family_pet(category)
-    follower_pets = self.follower.pets.where(user_id: self.follower)
-    followed_pets = self.followed.pets.where(user_id: self.followed)
-    bonds_generator(self.follower, followed_pets, category)
+  def change_bonds_category(category)
+    follower_pets = follower.pets.where(user_id: follower)
+    followed_pets = followed.pets.where(user_id: followed)
+    bonds_generator(follower, followed_pets, category)
   end
   # def disable_family_pet
   #   follower_pets = self.follower.pets.where(user_id: self.follower)

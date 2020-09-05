@@ -60,11 +60,11 @@ class User < ApplicationRecord
   end
 
   def active_relations
-    self.active_relationships.includes(:followed, :relation_category).order(updated_at: "DESC")
+    active_relationships.includes(:followed, :relation_category).order(updated_at: "DESC")
   end
 
   def passive_relations
-    self.passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
+    passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
   end
 
   private
@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def bonds_pets(relation)
-    self.bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
+    bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
   end
 
 end
