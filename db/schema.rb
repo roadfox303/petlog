@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_094911) do
+ActiveRecord::Schema.define(version: 2020_09_07_031812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2020_09_04_094911) do
     t.index ["user_id"], name: "index_bonds_on_user_id"
   end
 
-  create_table "calendars", force: :cascade do |t|
+  create_table "contents", force: :cascade do |t|
     t.date "have_on", null: false
     t.bigint "pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["have_on"], name: "index_calendars_on_have_on"
-    t.index ["pet_id"], name: "index_calendars_on_pet_id"
+    t.index ["have_on"], name: "index_contents_on_have_on"
+    t.index ["pet_id"], name: "index_contents_on_pet_id"
   end
 
   create_table "icons", force: :cascade do |t|
@@ -73,12 +73,12 @@ ActiveRecord::Schema.define(version: 2020_09_04_094911) do
 
   create_table "records", force: :cascade do |t|
     t.string "memo"
-    t.bigint "calendar_id"
+    t.bigint "content_id"
     t.bigint "record_category_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["calendar_id"], name: "index_records_on_calendar_id"
+    t.index ["content_id"], name: "index_records_on_content_id"
     t.index ["record_category_id"], name: "index_records_on_record_category_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
@@ -115,11 +115,11 @@ ActiveRecord::Schema.define(version: 2020_09_04_094911) do
   add_foreign_key "bonds", "pets"
   add_foreign_key "bonds", "relation_categories"
   add_foreign_key "bonds", "users"
-  add_foreign_key "calendars", "pets"
+  add_foreign_key "contents", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "record_categories", "icons"
   add_foreign_key "record_categories", "pets"
-  add_foreign_key "records", "calendars"
+  add_foreign_key "records", "contents"
   add_foreign_key "records", "record_categories"
   add_foreign_key "records", "users"
 end

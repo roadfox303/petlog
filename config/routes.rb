@@ -21,7 +21,14 @@ Rails.application.routes.draw do
     member do
       get :bonds
     end
+    resources :contents do
+      member do
+        get :create_records
+      end
+      resources :records
+    end
   end
+  resources :record_categories
 
   resources :bonds, only: [:create, :edit, :update, :destroy]
 end

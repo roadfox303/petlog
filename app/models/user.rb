@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :bonds
   has_many :pets, through: :bonds, dependent: :destroy
 
+  has_many :records
+
   attr_accessor :relation_category
 
   mount_uploader :avatar, ImageUploader

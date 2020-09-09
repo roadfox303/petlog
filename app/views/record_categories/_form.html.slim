@@ -1,0 +1,8 @@
+- binding.pry
+= form_with model: record_category, local:true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, placeholder:"※必須", id: 'record_category_title'
+  .form-group
+    = f.label :description
+    = f.text_area :description, placeholder:"説明", id: 'record_category_description'
