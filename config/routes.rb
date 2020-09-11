@@ -27,8 +27,9 @@ Rails.application.routes.draw do
       end
       resources :records
     end
+    resources :record_categories
   end
-  resources :record_categories
+
 
   resources :bonds, only: [:create, :edit, :update, :destroy]
 end

@@ -43,7 +43,6 @@ if Icon.count == 0
   ]
 
   IconEvent.create! [
-    { name: 'トリミング', style: 'fas fa-cut'},
     { name: '病院', style: 'fas fa-hospital'},
     { name: '注射', style: 'fas fa-syringe'},
     { name: '写真撮影', style: 'fas fa-camera-retro'},
@@ -53,10 +52,10 @@ if Icon.count == 0
     { name: 'アニバーサリー', style: 'fas fa-birthday-cake'},
     { name: 'ギフト', style: 'fas fa-gift'},
     { name: 'アワード', style: 'fas fa-award'},
-    { name: '葬儀', style: 'fas fa-gifts'},
+    { name: '葬儀', style: 'fas fa-monument'},
     { name: '出荷', style: 'fas fa-caravan'}
   ]
-  
+
   IconEmotion.create! [
     { name: 'ハッピー', style: 'far fa-laugh-squint'},
     { name: 'スマイル', style: 'far fa-smile-beam'},

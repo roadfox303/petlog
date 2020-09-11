@@ -32,6 +32,11 @@ ja:
         join_age: お迎え時の年齢
         comment: コメント
         intrust: 里親募集
+      record_category:
+        id: ID
+        title: カテゴリ名
+        description: 説明
+        icon_id: アイコン
   date:
     abbr_day_names:
     - 日

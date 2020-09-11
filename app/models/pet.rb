@@ -5,9 +5,10 @@ class Pet < ApplicationRecord
   has_many :bonds
   has_many :users, through: :bonds, dependent: :destroy
   belongs_to :owner, class_name: "User",foreign_key: "user_id"
-  
+
   has_many :contents, dependent: :destroy
   has_many :record_categories, dependent: :destroy
+  # accepts_nested_attributes_for :record_categories
 
   mount_uploader :avatar, ImageUploader
   attr_accessor :image_x
@@ -31,11 +32,19 @@ class Pet < ApplicationRecord
   end
 
   def family_users
-    bonds_users([4,3])
+    bonds_users([RELATION::OWNER, RELATION::FAMILY])
   end
 
   def follower_users
-    bonds_users([2,1])
+    bonds_users([RELATION::PREVIOUS_FAMILY, RELATION::FOLLOWER])
+  end
+
+  def check_pet_famiry(user)
+    bonds.find_by(user_id: user, relation_category_id: [RELATION::OWNER, RELATION::FAMILY])
+  end
+
+  def check_pet_owner(user)
+    owner == user
   end
 
   private

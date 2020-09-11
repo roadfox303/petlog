@@ -21,7 +21,7 @@ div.raw.user_profile
               i.fas.fa-address-book
               span フォロー解除
           - else
-            = link_to relationships_path(follower_id: current_user, followed_id: @user, relation_category_id: 1),method: 'post', class:'button2 button-secondary' do
+            = link_to relationships_path(follower_id: current_user, followed_id: @user, relation_category_id: RELATION::FOLLOWER),method: 'post', class:'button2 button-secondary' do
               i.far.fa-address-book
               span フォロー
     ul.count

@@ -1,7 +1,7 @@
 class BondsController < ApplicationController
   def create
     if have_upper_relation?
-      redirect_to pet_path(bond_params[:pet_id]), notice: '既にフォローされています'
+      redirect_to pet_path(bond_params[:pet_id]), alert: '既にフォローされています'
     else
       current_user.bonds.find_or_create_by(bond_params)
       redirect_to pet_path(bond_params[:pet_id]), notice: 'フォローしました'
@@ -22,6 +22,6 @@ class BondsController < ApplicationController
 
   def have_upper_relation?
     relation = current_user.bonds.find_by(pet_id: bond_params[:pet_id],user_id: bond_params[:user_id])
-    (relation && relation_category_id > 1) ? true : false
+    (relation && relation_category_id > RELATION::FOLLOWER) ? true : false
   end
 end

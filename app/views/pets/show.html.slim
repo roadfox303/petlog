@@ -63,7 +63,8 @@ div.raw.pet_profile
 div.raw
   = link_to 'コンテンツ', pet_contents_path(pet_id: @pet)
   = link_to 'レコード', create_records_pet_content_path(pet_id: @pet)
-  = link_to 'レコードカテゴリー', new_record_category_path(pet_id: @pet)
+  = link_to 'レコードカテゴリー作成', new_pet_record_category_path(pet_id: @pet)
+  = link_to 'レコードカテゴリー一覧', pet_record_categories_path(pet_id: @pet)
 div.raw.card_list#family_list
   = render partial: 'card_list', locals: { list: @familys, list_title: 'ファミリーユーザー' }
 div.raw.card_list#follower_list

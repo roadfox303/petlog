@@ -17,13 +17,17 @@ $base-color: #F2F5F6;
 $middium-color: #8D99AF;
 $thema-color: #DE3A5D;
 $vivid-color: #FF436B;
+$vivid-hover: #ff7a97;
 $dark-color: #B82C5C;
 $font-color: #412B2D;
 $font-color-light: #8D99AF;
 $font-placeholder: #cccccc;
 $icon-color: #ff938b;
 $border-color: #DAD8D4;
+$focus-color: #33C3F0;
+$focus-hover: #74ddfc;
 $hover_box: #F2F5F6;
+
 
 body {
   margin: 0;
@@ -63,6 +67,14 @@ h1:before {
 .card_list li a {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
 }
+.button_box{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.button_box input[type="submit"],.button_box .button,.button_box .button2{
+  margin: 0 1rem;
+}
 ul {
   padding: 0;
   list-style: none;
@@ -85,6 +97,9 @@ i {
   width:100%;
   height: 100%;
   object-fit:cover;
+}
+.hidden {
+  display: hidden!important;
 }
 #img_field{
   height: 100%;
@@ -114,6 +129,14 @@ i {
   background: #dfefff;
   box-shadow: 0px 0px 0px 5px #dfefff;
   border: dashed 1px #96c2fe;
+  padding: 0.5em;
+  color: #454545;
+  margin: 2rem 0;
+}
+.alert{
+  background: #ffdfef;
+  box-shadow: 0px 0px 0px 5px #ffdfef;
+  border: dashed 1px #fe96c2;
   padding: 0.5em;
   color: #454545;
   margin: 2rem 0;
@@ -226,4 +249,16 @@ input,textarea {
 }
 #top_nav .nav-bar li{
   margin-left: 2rem;
+}
+.button-primary.edit{
+  background: $focus-color;
+  &:hover {
+    background: $focus-hover;
+  }
+}
+.button-primary.delete{
+  background: $vivid-color;
+  &:hover {
+    background: $vivid-hover;
+  }
 }

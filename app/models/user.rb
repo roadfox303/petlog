@@ -54,11 +54,11 @@ class User < ApplicationRecord
   end
 
   def family_pets
-    bonds_pets([4,3])
+    bonds_pets([RELATION::OWNER, RELATION::FAMILY])
   end
 
   def follow_pets
-    bonds_pets([2,1])
+    bonds_pets([RELATION::PREVIOUS_FAMILY, RELATION::FOLLOWER])
   end
 
   def active_relations

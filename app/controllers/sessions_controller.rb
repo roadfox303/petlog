@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete(:pet_id)
     reset_session
     redirect_to root_path, notice: 'ログアウトしました'
   end

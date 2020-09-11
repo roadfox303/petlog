@@ -13,10 +13,10 @@ class RelationshipsController < ApplicationController
         toggle_mutual_family(current_user, other_user)
         redirect_to user_path(current_user), notice: "「#{other_user.name}」に対し#{relationship_params[:edit_title]}しました"
       else
-        redirect_to user_path(current_user), notice: "編集に失敗しました"
+        redirect_to user_path(current_user), alert: "編集に失敗しました"
       end
     else
-      redirect_to user_path(current_user), notice: "編集できません"
+      redirect_to user_path(current_user), alert: "編集できません"
     end
   end
 
@@ -48,20 +48,20 @@ class RelationshipsController < ApplicationController
   def toggle_mutual_family(a,b)
     a_follow = Relationship.find_by(follower_id:a, followed_id: b)
     b_follow = Relationship.find_by(follower_id:b, followed_id: a)
-    if (a_follow&.relation_category_id == 3) && (b_follow&.relation_category_id == 3)
+    if (a_follow&.relation_category_id == RELATION::FAMILY) && (b_follow&.relation_category_id == RELATION::FAMILY)
       a_follow&.family = true
       b_follow&.family = true
       a_follow&.save
       b_follow&.save
-      a_follow.change_bonds_category(3)
-      b_follow.change_bonds_category(3)
+      a_follow.change_bonds_category(RELATION::FAMILY)
+      b_follow.change_bonds_category(RELATION::FAMILY)
     else
       a_follow&.family = false
       b_follow&.family = false
       a_follow&.save
       b_follow&.save
-      a_follow&.change_bonds_category(1)
-      b_follow&.change_bonds_category(1)
+      a_follow&.change_bonds_category(RELATION::FOLLOWER)
+      b_follow&.change_bonds_category(RELATION::FOLLOWER)
     end
   end
 end
