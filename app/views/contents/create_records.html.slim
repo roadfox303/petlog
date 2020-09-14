@@ -1,0 +1,6 @@
+= form_with model: [@pet,@content] do |f|
+  = f.text_field :have_on, class: 'content_have_on'
+  = f.fields_for :racords do |r|
+    = r.text_field :memo
+    / = r.select :icon_id, @record_categories.map { |obj| [obj.title, obj.id, {class: obj.style} ] }, id: "record_category_icon"
+  = f.submit '作成する', class: 'btn btn-primary'

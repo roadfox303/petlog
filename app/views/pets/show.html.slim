@@ -61,8 +61,9 @@ div.raw.pet_profile
         i.fas.fa-hand-holding-heart
         span 里親を募集しています
 div.raw
-  = link_to 'コンテンツ', pet_contents_path(pet_id: @pet)
-  = link_to 'レコード', create_records_pet_content_path(pet_id: @pet)
+  = link_to 'コンテンツ一覧', pet_contents_path(pet_id: @pet)
+  / = link_to 'レコード', create_records_pet_content_path(pet_id: @pet)
+  / = link_to 'レコードコントローラ', new_pet_content_record_path([pet_id: @pet, content_id: @pet.contents.create(have_on: Date.today)])
   = link_to 'レコードカテゴリー作成', new_pet_record_category_path(pet_id: @pet)
   = link_to 'レコードカテゴリー一覧', pet_record_categories_path(pet_id: @pet)
 div.raw.card_list#family_list

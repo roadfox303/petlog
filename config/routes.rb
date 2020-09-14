@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       get :bonds
     end
     resources :contents do
-      member do
+      collection do
         get :create_records
       end
       resources :records
