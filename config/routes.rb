@@ -9,9 +9,7 @@ Rails.application.routes.draw do
     member do
       get :bonds
       get :follower
-      # post :follower
       get :following
-      # post :follow_create
     end
   end
 
@@ -21,13 +19,10 @@ Rails.application.routes.draw do
     member do
       get :bonds
     end
-    resources :contents do
-      collection do
-        get :create_records
-      end
-      resources :records
+    resources :contents, only: [:index] do
+      resources :records, only: [:new, :create, :destroy]
     end
-    resources :record_categories
+    resources :record_categories, except: [:show]
   end
 
 

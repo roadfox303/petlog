@@ -1,0 +1,16 @@
+h1.stamp クイックログ
+= form_with model: [@pet, @content, @record] do |f|
+  h3.date #{@content.have_on.strftime('%Y/%-m/%-d')}
+  = f.label :record_category_id
+  = f.select :record_category_id, @categories.map { |obj| [obj.title, obj.id] }
+  div#category_select data="record_record_category_id"
+    ul
+      - @categories.each do |category|
+        li
+          a.button2
+            i class=category.icon.style
+            span #{category.title}
+            span.category_id.hidden #{category.id}
+  = f.label :memo
+  = f.text_area :memo, placeholder:"memo"
+  = f.submit '作成する', class: 'btn btn-primary'

@@ -11,6 +11,5 @@ $(document).on('turbolinks:load', function() {
       $(this).parent().find("li").removeClass('btn_on');
       $(this).addClass('btn_on');
     });
-    console.log($('#record_category_icon_id option:selected').val());
   }
 });

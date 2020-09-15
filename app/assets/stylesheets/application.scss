@@ -41,23 +41,29 @@ a {
   text-decoration: none;
 }
 h1 {
-  position: relative;/*相対位置*/
-  padding-left: 1.2em;/*アイコン分のスペース*/
+  position: relative;
+  padding-left: 1.2em;
   padding-bottom: 1rem;
-  line-height: 1.4;/*行高*/
-  color: #7b6459;/*文字色*/
+  line-height: 1.4;
+  color: #7b6459;
   margin: 1.6rem 0;
   border-bottom: dashed 2px $border-color;
 }
 h1:before {
   font-family: "Font Awesome 5 Free";
-  content: "\f1b0";/*アイコンのユニコード*/
+  content: "\f1b0";
   font-weight: 900;
-  position: absolute;/*絶対位置*/
-  font-size: 1em;/*サイズ*/
-  left: 0;/*アイコンの位置*/
-  top: 0;/*アイコンの位置*/
-  color: $icon-color; /*アイコン色*/
+  position: absolute;
+  font-size: 1em;
+  left: 0;
+  top: 0;
+  color: $icon-color;
+}
+h1.stamp:before {
+  content: "\f5bf";
+}
+h1.user:before {
+  content: "\f2bd";
 }
 .card_list .title h5,.raw_list .title h5{
   border-left: solid 5px $icon-color;

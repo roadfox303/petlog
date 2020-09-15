@@ -1,7 +1,29 @@
 h1 コンテンツ一覧 [#{@pet.name}]
-div.raw.pets_list
+div.raw.contents_list
   ul
+    - @contents.each do |date|
+      li
+        h4 #{l date.have_on, format: :long}
+        - date.records.each do |record|
+          div.content
+            div.left_column
+              span.time #{l record.created_at, format: :time}
+              div.icon
+                i class="#{record.record_category.icon.style}"
+              span.title #{record.record_category.title}
+            div.center_column
+              div.owner_avatar
+                = image_tag (record.user.avatar.avatar_m.url) if record.user.avatar && record.user.avatar.url
+              span.user_name #{record.user.name}
+            div.right_column
+              = link_to do
+                i.fas.fa-info-circle
+              end
+              - if record.user_id == current_user.id
+                = link_to pet_content_record_path(content_id: date.id, id: record.id) do
+                  i.fas.fa-trash
     / - @contents.each do |date|
       li
 
-= link_to '作成', create_records_pet_contents_path
+/ = link_to '作成', new_records_pet_contents_path
+= link_to '作成', new_pet_content_record_path(content_id:@content)
