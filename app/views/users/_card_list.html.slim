@@ -14,3 +14,6 @@ ul
               | フォロー
             - else
               | #{bond.relation_category.title}
+          span.relation_owner.hover_none
+            - if bond.relation_category.title == 'フォロワー'
+              | #{bond.pet.owner.name}

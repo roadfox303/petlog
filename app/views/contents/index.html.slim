@@ -1,0 +1,37 @@
+article
+  h1 コンテンツ一覧
+  div.title
+    h5 #{@pet.name}
+  section.raw.contents_list
+    - @contents.each do |date|
+      article.date
+        div.content_header
+          h5.date #{l date.have_on, format: :long}
+          div.create_button
+            - if date == @content
+              = link_to new_pet_content_record_path(content_id:@content), class:'button2 button-secondary' do
+                i.fas.fa-stamp
+                span 記録
+        section
+          - date.records.each do |record|
+            article.content
+              div.left_column
+                span.time #{l record.created_at, format: :time}
+                div.icon
+                  i class="#{record.record_category.icon.style}"
+                span.title #{record.record_category.title}
+              div.center_column
+                div.owner_avatar
+                  = image_tag (record.user.avatar.avatar_m.url) if record.user.avatar && record.user.avatar.url
+                span.user_name #{record.user.name}
+              div.right_column
+                - if record.memo.present?
+                  span.memo_btn data="#memo_#{record.id}"
+                    i.fas.fa-info-circle
+                - if record.user_id == current_user.id
+                  = link_to pet_content_record_path(content_id: date.id, id: record.id), method:'delete', data: { confirm: "ログスタンプ : #{l record.created_at, format: :long}「#{record.record_category.title}」を削除しますか？" } do
+                    i.fas.fa-trash
+            - if record.memo.present?
+              dl.record_memo.hidden id="memo_#{record.id}"
+                dt memo
+                dd #{record.memo}

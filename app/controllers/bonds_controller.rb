@@ -1,7 +1,11 @@
 class BondsController < ApplicationController
   def create
-    current_user.bonds.find_or_create_by(bond_params)
-    redirect_to pet_path(bond_params[:pet_id]), notice: 'フォローしました'
+    if have_upper_relation?
+      redirect_to pet_path(bond_params[:pet_id]), alert: '既にフォローされています'
+    else
+      current_user.bonds.find_or_create_by(bond_params)
+      redirect_to pet_path(bond_params[:pet_id]), notice: 'フォローしました'
+    end
   end
 
   def destroy
@@ -14,5 +18,10 @@ class BondsController < ApplicationController
 
   def bond_params
     params.permit(:id, :pet_id, :user_id, :relation_category_id)
+  end
+
+  def have_upper_relation?
+    relation = current_user.bonds.find_by(pet_id: bond_params[:pet_id],user_id: bond_params[:user_id])
+    (relation && relation_category_id > RELATION::FOLLOWER) ? true : false
   end
 end

@@ -5,10 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="https://kit.fontawesome.com/dc394bf18c.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="<%= controller.controller_name %>" data-controller="<%= controller.controller_name %>" data-action="<%= controller.action_name %>">
@@ -16,13 +17,13 @@
       <div class="container">
         <%= link_to 'Petlog', root_path, id:'top_logo' %>
         <ul class="nav-bar">
-          <li><%= link_to 'ペット一覧', pets_path, class:'nav_link'%></li>
+          <li><i class="fas fa-list-alt"></i><%= link_to 'ペット一覧', pets_path, class:'nav_link'%></li>
           <% if current_user %>
-          <li><%= link_to 'プロフィール', user_path(current_user), class:'nav_link'%></li>
-          <li><%= link_to 'ユーザー一覧', users_path, class:'nav_link'%></li>
-          <li><%= link_to 'ログアウト', logout_path, method: :delete, class:'nav_link'%></li>
+          <li><i class="fas fa-paw"></i><%= link_to 'ペット登録', new_pet_path, class:'nav_link'%></li>
+          <li><i class="fas fa-user"></i><%= link_to 'プロフィール', user_path(current_user), class:'nav_link'%></li>
+          <li><i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト', logout_path, method: :delete, class:'nav_link'%></li>
           <% else %>
-          <li><%= link_to 'ログイン', login_path, class:'nav_link'%></li>
+          <li><i class="fas fa-sign-in-alt"></i><%= link_to 'ログイン', login_path, class:'nav_link'%></li>
           <% end %>
         </ul>
       </div>
@@ -30,8 +31,10 @@
     <div class="container">
       <% if flash.notice.present? %>
       <div class="notice"><%= flash.notice %></div>
+      <% elsif flash.alert.present? %>
+      <div class="alert"><%= flash.alert %></div>
       <% end %>
       <%= yield %>
-    <div>
+    </div>
   </body>
 </html>

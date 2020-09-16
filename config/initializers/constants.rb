@@ -1,0 +1,6 @@
+module RELATION
+  OWNER = 4
+  FAMILY = 3
+  PREVIOUS_FAMILY = 2
+  FOLLOWER = 1
+end

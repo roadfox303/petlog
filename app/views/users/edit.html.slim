@@ -1,4 +1,4 @@
-h1 ユーザープロフィール
+h1.user ユーザープロフィール
 - @user.errors.any?
   = render partial: 'shared/errors', locals: { object: @user }
 = content_tag(:div, id:'cropper', style: "display: none;")

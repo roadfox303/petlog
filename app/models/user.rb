@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name, presence: true,uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password_digest, presence: true, length: { minimum: 8 }, unless: :password_blank?
 
@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_many :bonds
   has_many :pets, through: :bonds, dependent: :destroy
+
+  has_many :records
 
   attr_accessor :relation_category
 
@@ -52,19 +54,19 @@ class User < ApplicationRecord
   end
 
   def family_pets
-    bonds_pets([4,3])
+    bonds_pets([RELATION::OWNER, RELATION::FAMILY])
   end
 
   def follow_pets
-    bonds_pets([2,1])
+    bonds_pets([RELATION::PREVIOUS_FAMILY, RELATION::FOLLOWER])
   end
 
   def active_relations
-    self.active_relationships.includes(:followed, :relation_category).order(updated_at: "DESC")
+    active_relationships.includes(:followed, :relation_category).order(updated_at: "DESC")
   end
 
   def passive_relations
-    self.passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
+    passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
   end
 
   private
@@ -73,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def bonds_pets(relation)
-    self.bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
+    bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
   end
 
 end

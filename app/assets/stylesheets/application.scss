@@ -17,17 +17,18 @@ $base-color: #F2F5F6;
 $middium-color: #8D99AF;
 $thema-color: #DE3A5D;
 $vivid-color: #FF436B;
+$vivid-hover: #ff7a97;
 $dark-color: #B82C5C;
 $font-color: #412B2D;
 $font-color-light: #8D99AF;
 $font-placeholder: #cccccc;
 $icon-color: #ff938b;
 $border-color: #DAD8D4;
+$focus-color: #33C3F0;
+$focus-hover: #74ddfc;
 $hover_box: #F2F5F6;
 
-// html {
-//   background: #fff;
-// }
+
 body {
   margin: 0;
   background-color: $base-color;
@@ -40,31 +41,46 @@ a {
   text-decoration: none;
 }
 h1 {
-  position: relative;/*相対位置*/
-  padding-left: 1.2em;/*アイコン分のスペース*/
+  position: relative;
+  padding-left: 1.2em;
   padding-bottom: 1rem;
-  line-height: 1.4;/*行高*/
-  color: #7b6459;/*文字色*/
+  line-height: 1.4;
+  letter-spacing: 0.05rem;
+  color: #7b6459;
   margin: 1.6rem 0;
   border-bottom: dashed 2px $border-color;
 }
 h1:before {
   font-family: "Font Awesome 5 Free";
-  content: "\f1b0";/*アイコンのユニコード*/
+  content: "\f1b0";
   font-weight: 900;
-  position: absolute;/*絶対位置*/
-  font-size: 1em;/*サイズ*/
-  left: 0;/*アイコンの位置*/
-  top: 0;/*アイコンの位置*/
-  color: $icon-color; /*アイコン色*/
+  position: absolute;
+  font-size: 1em;
+  left: 0;
+  top: 0;
+  color: $icon-color;
 }
-.card_list .title h5,.raw_list .title h5{
+h1.stamp:before {
+  content: "\f5bf";
+}
+h1.user:before {
+  content: "\f2bd";
+}
+.card_list .title h5,.raw_list .title h5,.title h5{
   border-left: solid 5px $icon-color;
   text-indent: 1rem;
   margin-right: 1rem;
 }
 .card_list li a {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
+}
+.button_box{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.button_box input[type="submit"],.button_box .button,.button_box .button2{
+  margin: 0 1rem;
 }
 ul {
   padding: 0;
@@ -89,6 +105,7 @@ i {
   height: 100%;
   object-fit:cover;
 }
+
 #img_field{
   height: 100%;
 }
@@ -117,6 +134,14 @@ i {
   background: #dfefff;
   box-shadow: 0px 0px 0px 5px #dfefff;
   border: dashed 1px #96c2fe;
+  padding: 0.5em;
+  color: #454545;
+  margin: 2rem 0;
+}
+.alert{
+  background: #ffdfef;
+  box-shadow: 0px 0px 0px 5px #ffdfef;
+  border: dashed 1px #fe96c2;
   padding: 0.5em;
   color: #454545;
   margin: 2rem 0;
@@ -180,7 +205,7 @@ input,textarea {
   background: #cccccc;
 }
 .attention {
-  color:#f00;
+  color:$vivid-color;
 }
 .field_with_errors {
   display: inline;
@@ -198,9 +223,6 @@ input,textarea {
 }
 .hover_box {
   transition:all 0.3s ease-out;
-  // &:hover {
-  //   background: $hover_box;
-  // }
 }
 
 /* ヘッダー */
@@ -232,4 +254,19 @@ input,textarea {
 }
 #top_nav .nav-bar li{
   margin-left: 2rem;
+}
+.button-primary.edit{
+  background: $focus-color;
+  &:hover {
+    background: $focus-hover;
+  }
+}
+.button-primary.delete{
+  background: $vivid-color;
+  &:hover {
+    background: $vivid-hover;
+  }
+}
+.button2:hover{
+  color: $vivid-color;
 }

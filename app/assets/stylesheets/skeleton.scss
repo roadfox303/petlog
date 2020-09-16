@@ -161,7 +161,8 @@ a {
   color: #DE3A5D; }
 a:hover {
   color: #FF436B; }
-
+a .hover_none, a:hover .hover_none {
+  color: #412B2D; }
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -171,13 +172,13 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"] {
   display: inline-block;
-  /* height: 38px; */
+  height: 38px;
   padding: 0 30px;
   color: #555;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
-  /* line-height: 38px; */
+  line-height: 38px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   text-decoration: none;
@@ -205,6 +206,11 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
+  transition:all 0.15s ease-out;
+  &:hover {
+    color: #FF436B;
+    border: 1px solid #FF436B;
+  }
 }
 
 .button:hover,
@@ -227,7 +233,9 @@ input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
   background-color: #FF436B;
-  border-color: #FF436B; }
+  border-color: #FF436B;
+  border-radius: 0.5rem;
+}
 .button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,

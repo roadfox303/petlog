@@ -9,7 +9,9 @@ $dark-color: #B82C5C;
 $font-color: #412B2D;
 $font-color-light: #8D99AF;
 $font-placeholder: #cccccc;
+$icon-color: #ff938b;
 $border-color: #DAD8D4;
+$focus-color: #33C3F0;
 $hover_box: #F2F5F6;
 
 .user_profile {
@@ -91,14 +93,14 @@ $hover_box: #F2F5F6;
 }
 
 /* ユーザーリスト */
-.users_list li{
+.users_list article{
   background: #fff;
   border-radius: 3px;
   margin-bottom: 1rem;
   padding: 2rem;
   border: solid 1px $border-color ;
 }
-.users_list li a {
+.users_list article a {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -106,10 +108,10 @@ $hover_box: #F2F5F6;
     color: $font-color;
   }
 }
-.users_list li a:hover .user_name{
+.users_list article a:hover .user_name{
   color: $vivid-color;
 }
-.users_list li h3,.users_list li h4{
+.users_list article h3,.users_list article h4{
   margin-bottom: 0;
 }
 .users_list .left_column{
@@ -144,22 +146,22 @@ $hover_box: #F2F5F6;
 
 /* ユーザーメニュー */
 
-#user_menu_nav {
+#user_menu_nav,#pet_menu_nav {
   display: flex;
   justify-content: center;
   border-top: 1px dashed $border-color;
   padding: 2rem 0 1rem;
 }
-#user_menu_nav ul{
+#user_menu_nav ul,#pet_menu_nav ul{
   display: block;
   float: left;
 }
-#user_menu_nav li {
+#user_menu_nav li,#pet_menu_nav li {
   display: block;
   float: left;
   margin: 0 1rem;
 }
-#user_menu_nav li a{
+#user_menu_nav li a,#pet_menu_nav li a{
   font-size: 1.4rem;
   padding: 0.5rem 1.5rem;
   margin-bottom: 1rem;
@@ -198,6 +200,13 @@ $hover_box: #F2F5F6;
   padding: 0.5rem 2rem;
   width: 13rem;
   margin-right: 1rem;
+  &:hover {
+    color: $vivid-color;
+  }
+}
+#avatar_btn:hover{
+  color: $focus-color;
+  border: solid 1px $focus-color;
 }
 #relation_users .relation_comment{
   width: 18rem;

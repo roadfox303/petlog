@@ -1,0 +1,19 @@
+article
+  h1 LOGスタンプ一覧
+  div.title
+    h5 #{@pet.name}
+  section#record_category_btn
+    = link_to new_pet_record_category_path(pet_id: @pet), class:"button2" do
+      i.far.fa-plus-square
+      span 追加
+  section#pet_record_category_list
+    ul
+      - @record_categories.each do |category|
+        li
+          i class=category.icon.style
+          span.title #{category.title}
+          - if category.description != ""
+            div.description #{category.description}
+          div.buttons
+            = link_to '削除', pet_record_category_path(id:category), method: 'delete', class: 'button-primary delete'
+            = link_to '編集', edit_pet_record_category_path(id:category), class: 'button-primary edit'

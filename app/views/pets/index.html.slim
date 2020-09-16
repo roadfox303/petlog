@@ -1,8 +1,8 @@
-h1.page_title ペット一覧
-div.raw.pets_list
-  ul
+article
+  h1.page_title ペット一覧
+  section.raw.pets_list
     - @pets.each do |pet|
-      li.hover_box
+      article.hover_box
         = link_to pet_path(pet), id: "pet_#{pet.id}" do
           div.left_column
             - if pet.avatar && pet.avatar.url
@@ -12,11 +12,11 @@ div.raw.pets_list
           div.right_column
             h3.pet_name #{pet.name}
             span.pet_species #{pet.species}
-            span.pet_comment
+            span.pet_comment.hover_none
               -if pet.comment.present?
                 i.fas.fa-comment
               = truncate(pet.comment, :length => 120)
-            ul.status
+            ul.status.hover_none
               li
                 div.owner
                   div.owner_avatar

@@ -32,6 +32,19 @@ ja:
         join_age: お迎え時の年齢
         comment: コメント
         intrust: 里親募集
+      record_category:
+        id: ID
+        title: カテゴリ名
+        description: 説明
+        icon_id: アイコン
+      record:
+        id: ID
+        record_category_id: カテゴリ
+        memo: メモ
+      content:
+        id: ID
+        have_on: 日付
+        pet_id: ペット
   date:
     abbr_day_names:
     - 日
@@ -226,7 +239,8 @@ ja:
   time:
     am: 午前
     formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
+      default: "%Y年%-m月%-d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%-m/%-d %H:%M"
+      short: "%-m/%-d %H:%M"
+      time: "%H:%M"
     pm: 午後

@@ -1,4 +1,4 @@
-h1 ユーザー登録
+h1.user ユーザー登録
 - @user.errors.any?
   = render partial: 'shared/errors', locals: { object: @user }
 div.raw
@@ -15,4 +15,5 @@ div.raw
     .form-group
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: 'u-full-width', id: 'sign_up_password_confirmation'
-    = f.submit '登録する' , class:'button-primary'
+    div.button_box
+      = f.submit '登録する' , class:'button-primary'

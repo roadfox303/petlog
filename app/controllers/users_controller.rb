@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy, :follower, :following]
-  skip_before_action :login_required
+  skip_before_action :login_required, only: [:index, :new, :create, :show ]
 
   def index
     @users = User.all
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      redirect_to users_path, notice: "「#{@user.name}」でユーザー登録しました"
+      redirect_to user_path(@user), notice: "「#{@user.name}」でユーザー登録しました"
     else
       render :new
     end
@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     @followers = @user.followers
     @followings = @user.followings
     @family_pets = @user.family_pets.order(id: "ASC")
-    @follow_pets = @user.follow_pets.order(id: "DESC")
+    # @follow_pets = @user.follow_pets.order(id: "DESC")
+    @follow_pets = @user.follow_pets.includes(pet: :owner).order(id: "DESC")
     @authority = auth_user?
   end
 
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user), notice: "「#{@user.name}」のプロフィールを編集しました"
     else
-      render :edit, notice: "「#{@user.name}」のプロフィールを編集できませんでした"
+      render :edit, alert: "「#{@user.name}」のプロフィールを編集できませんでした"
     end
   end
 
@@ -54,13 +55,6 @@ class UsersController < ApplicationController
     @mutual_relationships = (current_user.follower_users & current_user.following_users).map do |user|
       [user.id, user.relation_category]
     end
-  end
-
-  def follow_create
-    binding.pry
-  end
-
-  def follow_cdestroy
   end
 
   private
