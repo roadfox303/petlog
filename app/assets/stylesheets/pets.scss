@@ -15,14 +15,14 @@ $focus-color: #33C3F0;
 $hover_box: #F2F5F6;
 
 /* ペットリスト */
-.pets_list li{
+.pets_list article{
   background: #fff;
   border-radius: 3px;
   margin-bottom: 1rem;
   padding: 2rem;
   border: solid 1px $border-color ;
 }
-.pets_list li a {
+.pets_list article a {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -30,10 +30,10 @@ $hover_box: #F2F5F6;
     color: $font-color;
   }
 }
-.pets_list li a:hover{
+.pets_list article a:hover{
   color: $vivid-color;
 }
-.pets_list li h3,.pets_list li h4{
+.pets_list article h3,.pets_list article h4{
   margin-bottom: 0;
 }
 .pets_list .left_column{

@@ -102,3 +102,16 @@ $hover_box: #F2F5F6;
 #record_category_title, #record_category_description{
   width: 100%;
 }
+#category_select .button2:hover{
+  border: solid 1px $focus-color;
+}
+#record_category_btn{
+  display: flex;
+}
+#record_category_btn a{
+  padding: 0.8rem 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  background: #fff;
+  border-radius: 4px;
+}

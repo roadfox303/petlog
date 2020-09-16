@@ -1,57 +1,59 @@
-h1.user ユーザープロフィール
-- @user.errors.any?
-  = render partial: 'shared/errors', locals: { object: @user }
-div.raw.user_profile
-  div.four.columns.left
-    div.avatar
-      = image_tag (@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
-  div.eight.columns.right
-    div.raw
-      div.name #{@user.name}
-      - if @authority
-        div.edit
-          = link_to edit_user_path(current_user), class:'button2 button-secondary' do
-            i.fas.fa-user-edit
-            span プロフィール編集
-          end
-      - else
-        div.follow
-          -if relation = current_user.following?(@user)
-            = link_to relationship_path(followed_id:@user),method: 'delete', class:'button2 button-secondary' do
-              i.fas.fa-address-book
-              span フォロー解除
-          - else
-            = link_to relationships_path(follower_id: current_user, followed_id: @user, relation_category_id: RELATION::FOLLOWER),method: 'post', class:'button2 button-secondary' do
-              i.far.fa-address-book
-              span フォロー
-    ul.count
-      li
-        span 投稿
-        span.number 34
-        span 件
-      li
-        = link_to follower_user_path do
-          span フォロワー
-          span.number #{@followers.size}
-          span 人
-      li
-        = link_to following_user_path do
-          span フォロー
-          span.number #{@followings.size}
-          span 人
-    div.comment
-      h6 comment
-      p #{@user.comment}
-- if @authority
-  div.raw#user_menu_nav
-    ul
-      li
-        = link_to 'ペット登録', new_pet_path, class:'button2'
-      li
-        = link_to 'フォローユーザー一覧', following_user_path, class:'button2'
-      li
-        = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'
-div.raw.card_list#family_list
-  = render partial: 'card_list', locals: { list: @family_pets, list_title: 'ファミリーペット' }
-div.raw.card_list#follower_list
-  = render partial: 'card_list', locals: { list: @follow_pets, list_title: 'フォローアニマル' }
+article
+  h1.user ユーザープロフィール
+  - @user.errors.any?
+    = render partial: 'shared/errors', locals: { object: @user }
+
+  section.raw.user_profile
+    div.four.columns.left
+      div.avatar
+        = image_tag (@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
+    div.eight.columns.right
+      div.raw
+        div.name #{@user.name}
+        - if @authority
+          div.edit
+            = link_to edit_user_path(current_user), class:'button2 button-secondary' do
+              i.fas.fa-user-edit
+              span プロフィール編集
+            end
+        - else
+          div.follow
+            -if relation = current_user.following?(@user)
+              = link_to relationship_path(followed_id:@user),method: 'delete', class:'button2 button-secondary' do
+                i.fas.fa-address-book
+                span フォロー解除
+            - else
+              = link_to relationships_path(follower_id: current_user, followed_id: @user, relation_category_id: RELATION::FOLLOWER),method: 'post', class:'button2 button-secondary' do
+                i.far.fa-address-book
+                span フォロー
+      ul.count
+        li
+          span 投稿
+          span.number 34
+          span 件
+        li
+          = link_to follower_user_path do
+            span フォロワー
+            span.number #{@followers.size}
+            span 人
+        li
+          = link_to following_user_path do
+            span フォロー
+            span.number #{@followings.size}
+            span 人
+      div.comment
+        h6 comment
+        p #{@user.comment}
+  - if @authority
+    section.raw#user_menu_nav
+      ul
+        li
+          = link_to 'ペット登録', new_pet_path, class:'button2'
+        li
+          = link_to 'フォローユーザー一覧', following_user_path, class:'button2'
+        li
+          = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'
+  section.raw.card_list#family_list
+    = render partial: 'card_list', locals: { list: @family_pets, list_title: 'ファミリーペット' }
+  section.raw.card_list#follower_list
+    = render partial: 'card_list', locals: { list: @follow_pets, list_title: 'フォローアニマル' }

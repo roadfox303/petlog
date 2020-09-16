@@ -8,11 +8,19 @@ class RecordsController < ApplicationController
   end
 
   def create
-    test = @content.records.build(record_params)
-    test.save
+    @record = @content.records.build(record_params)
+    if @record.save
+      redirect_to pet_contents_path(@pet), notice: "#{l @record.created_at, format: :long} に「#{@record.record_category.title}」を記録しました"
+    end
   end
 
   def destroy
+    @record = Record.find_by(id: params[:id])
+    if @record.destroy
+      redirect_to pet_contents_path(@pet), notice: "#{l @record.created_at, format: :long} の「#{@record.record_category.title}」を削除しました"
+    else
+      redirect_to pet_contents_path(@pet), alert: "ログスタンプ「#{@record.record_category.title}」を削除できませんでした"
+    end
   end
 
   private

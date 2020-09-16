@@ -14,4 +14,4 @@
     = f.select :icon_id, @all_icons.map { |obj| [obj.name, obj.id, {class: obj.style} ] }, id: "record_category_icon"
   = f.hidden_field :pet_id, :value => @pet.id
   div.button_box
-    = f.submit '登録する' , class:'button-primary'
+    = f.submit '作成する' , class:'button-primary'

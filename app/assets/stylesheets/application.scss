@@ -45,6 +45,7 @@ h1 {
   padding-left: 1.2em;
   padding-bottom: 1rem;
   line-height: 1.4;
+  letter-spacing: 0.05rem;
   color: #7b6459;
   margin: 1.6rem 0;
   border-bottom: dashed 2px $border-color;
@@ -65,7 +66,7 @@ h1.stamp:before {
 h1.user:before {
   content: "\f2bd";
 }
-.card_list .title h5,.raw_list .title h5{
+.card_list .title h5,.raw_list .title h5,.title h5{
   border-left: solid 5px $icon-color;
   text-indent: 1rem;
   margin-right: 1rem;
@@ -104,9 +105,7 @@ i {
   height: 100%;
   object-fit:cover;
 }
-.hidden {
-  display: hidden!important;
-}
+
 #img_field{
   height: 100%;
 }
@@ -267,4 +266,7 @@ input,textarea {
   &:hover {
     background: $vivid-hover;
   }
+}
+.button2:hover{
+  color: $vivid-color;
 }

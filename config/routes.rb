@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   # post '/users/:id/follower', to: 'users#follower'
 
-  resources :users do
+  resources :users, except: [:index] do
     member do
       get :bonds
       get :follower

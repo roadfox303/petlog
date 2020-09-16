@@ -15,7 +15,7 @@ $focus-color: #33C3F0;
 $hover_box: #F2F5F6;
 
 h3.date{
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
 }
 #record_have_on{
   display: none;
@@ -63,4 +63,8 @@ h3.date{
 }
 #record_memo{
   width: 100%;
+}
+.card_list input[type="submit"]{
+  display: block;
+  margin: 0 auto;
 }

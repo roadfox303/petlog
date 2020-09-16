@@ -37,6 +37,14 @@ ja:
         title: カテゴリ名
         description: 説明
         icon_id: アイコン
+      record:
+        id: ID
+        record_category_id: カテゴリ
+        memo: メモ
+      content:
+        id: ID
+        have_on: 日付
+        pet_id: ペット
   date:
     abbr_day_names:
     - 日

@@ -43,21 +43,21 @@ module UsersHelper
     concat content_tag(:span, comment, class:'relation_comment')
     case array
     when [nil, RELATION::FOLLOWER],[nil, RELATION::FAMILY]
-      concat link_to('フォロー', relationships_path(followed_id: user, relation_category_id: RELATION::FOLLOWER), method:'post', class:'button2')
+      concat link_to('フォロー', relationships_path(followed_id: user, relation_category_id: RELATION::FOLLOWER), method:'post', class:'button2 button-secondary')
     when [RELATION::FOLLOWER, nil],[RELATION::FAMILY ,nil]
-      concat link_to('フォロー解除', relationship_path(follower_id:current_user.id ,followed_id: user.id), method:'delete', class:'button2')
+      concat link_to('フォロー解除', relationship_path(follower_id:current_user.id ,followed_id: user.id), method:'delete', class:'button2 button-secondary')
     when [RELATION::FOLLOWER, RELATION::FOLLOWER]
-      concat link_to('フォロー解除', relationship_path(follower_id:current_user.id ,followed_id: user.id), method:'delete', class:'button2')
+      concat link_to('フォロー解除', relationship_path(follower_id:current_user.id ,followed_id: user.id), method:'delete', class:'button2 button-secondary')
 
-      concat link_to('家族申請を送信', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FAMILY, edit_title:'家族申請を送信'), method:'patch', class:'button2')
+      concat link_to('家族申請を送信', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FAMILY, edit_title:'家族申請を送信'), method:'patch', class:'button2 button-secondary')
     when [RELATION::FOLLOWER, RELATION::FAMILY]
-      concat link_to('家族申請を受諾', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FAMILY, edit_title:'家族申請を受諾'), method:'patch', class:'button2')
+      concat link_to('家族申請を受諾', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FAMILY, edit_title:'家族申請を受諾'), method:'patch', class:'button2 button-secondary')
 
-      concat link_to('家族申請を却下', relationship_path(follower_id: user.id ,followed_id: current_user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族申請を却下'), method:'patch', class:'button2')
+      concat link_to('家族申請を却下', relationship_path(follower_id: user.id ,followed_id: current_user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族申請を却下'), method:'patch', class:'button2 button-secondary')
     when [RELATION::FAMILY, RELATION::FOLLOWER]
-      concat link_to('家族申請を解除', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族申請を解除'), method:'patch', class:'button2')
+      concat link_to('家族申請を解除', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族申請を解除'), method:'patch', class:'button2 button-secondary')
     when [RELATION::FAMILY, RELATION::FAMILY]
-      concat link_to('家族関係を解除', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族関係を解除'), method:'patch', class:'button2')
+      concat link_to('家族関係を解除', relationship_path(follower_id:current_user.id ,followed_id: user.id, relation_category_id: RELATION::FOLLOWER, edit_title:'家族関係を解除'), method:'patch', class:'button2 button-secondary')
     end
   end
 end

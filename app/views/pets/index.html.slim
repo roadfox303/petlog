@@ -1,8 +1,8 @@
-h1.page_title ペット一覧
-div.raw.pets_list
-  ul
+article
+  h1.page_title ペット一覧
+  section.raw.pets_list
     - @pets.each do |pet|
-      li.hover_box
+      article.hover_box
         = link_to pet_path(pet), id: "pet_#{pet.id}" do
           div.left_column
             - if pet.avatar && pet.avatar.url

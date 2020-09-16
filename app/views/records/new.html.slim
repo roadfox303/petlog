@@ -1,4 +1,4 @@
-h1.stamp クイックログ
+h1.stamp ログスタンプ
 = form_with model: [@pet, @content, @record] do |f|
   h3.date #{@content.have_on.strftime('%Y/%-m/%-d')}
   = f.label :record_category_id
@@ -13,4 +13,5 @@ h1.stamp クイックログ
             span.category_id.hidden #{category.id}
   = f.label :memo
   = f.text_area :memo, placeholder:"memo"
-  = f.submit '作成する', class: 'btn btn-primary'
+  div.raw.card_list
+    = f.submit '記録する', class: 'button button-primary'

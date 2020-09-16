@@ -1,72 +1,74 @@
-h1 ペットプロフィール
-- @pet.errors.any?
-  = render partial: 'shared/errors', locals: { object: @pet }
-div.raw.pet_profile
-  div.four.columns.left
-    div.avatar
-      = image_tag (@pet.avatar.avatar_m.url) if @pet.avatar && @pet.avatar.url
-  div.eight.columns.right
-    div.raw
-      div.name #{@pet.name}
-      - if @pet.owner == current_user
-        div.edit
-          = link_to edit_pet_path(@pet), class:'button2 button-secondary' do
-            i.fas.fa-edit
-            span 編集
-          end
-          = link_to pet_path(@pet),method: 'delete', data: { confirm: "本当に「#{@pet.name}」 を削除しますか？" }, class:'button2 button-secondary' do
-            i.fas.fa-trash
-            span 削除
-          end
-      - else
-        div.follow
-          -if @bond.present?
-            = link_to bond_path(@bond),method: 'delete', class:'button2 button-secondary' do
-              i.fas.fa-heart
-              span フォロー解除
-          - else
-            = link_to bonds_path(pet_id: @pet, user_id: current_user, relation_category_id: 1),method: 'post', class:'button2 button-secondary' do
-              i.far.fa-heart
-              span フォロー
-    div.species #{@pet.species}
-    ul.details
-      - if @pet.sex.present?
-        li.sex #{@pet.sex}
-      li.age #{@pet.age}
-      - if @pet.birthday.present?
-        li.birthday 誕生日 : #{@pet.birthday&.strftime("%Y年%-m月%-d日")}
-      - if @pet.join_day.present?
-        li.join_day お迎え日 : #{@pet.join_day&.strftime("%Y年%-m月%-d日")}
-    ul.count
-      li
-        i.fas.fa-sticky-note
-        span 投稿
-        span.number 34
-        span 件
-      li
-        i.fas.fa-heart
-        span フォロワー
-        span.number #{@followers.size}
-        span 人
-    div.owner
-      = link_to user_path(@owner) do
-        div.owner_avatar
-          = image_tag (@owner.avatar.avatar_s.url) if @owner.avatar && @owner.avatar.url
-        h4.owner_name #{@owner.name}
-  div.twelve.columns
-    div.comment #{@pet.comment}
-  div.twelve.columns.indication
-    - if @pet.intrust == true
-      div.button2.button-secondary
-        i.fas.fa-hand-holding-heart
-        span 里親を募集しています
-div.raw
-  = link_to 'コンテンツ一覧', pet_contents_path(pet_id: @pet)
-  / = link_to 'レコード', create_records_pet_content_path(pet_id: @pet)
-  / = link_to 'レコードコントローラ', new_pet_content_record_path([pet_id: @pet, content_id: @pet.contents.create(have_on: Date.today)])
-  = link_to 'レコードカテゴリー作成', new_pet_record_category_path(pet_id: @pet)
-  = link_to 'レコードカテゴリー一覧', pet_record_categories_path(pet_id: @pet)
-div.raw.card_list#family_list
-  = render partial: 'card_list', locals: { list: @familys, list_title: 'ファミリーユーザー' }
-div.raw.card_list#follower_list
-  = render partial: 'card_list', locals: { list: @followers, list_title: 'フォロワーユーザー' }
+article
+  h1 ペットプロフィール
+  - @pet.errors.any?
+    = render partial: 'shared/errors', locals: { object: @pet }
+  section.raw.pet_profile
+    div.four.columns.left
+      div.avatar
+        = image_tag (@pet.avatar.avatar_m.url) if @pet.avatar && @pet.avatar.url
+    div.eight.columns.right
+      div.raw
+        div.name #{@pet.name}
+        - if @pet.owner == current_user
+          div.edit
+            = link_to edit_pet_path(@pet), class:'button2 button-secondary' do
+              i.fas.fa-edit
+              span 編集
+            end
+            = link_to pet_path(@pet),method: 'delete', data: { confirm: "本当に「#{@pet.name}」 を削除しますか？" }, class:'button2 button-secondary' do
+              i.fas.fa-trash
+              span 削除
+            end
+        - else
+          div.follow
+            -if @bond.present?
+              = link_to bond_path(@bond),method: 'delete', class:'button2 button-secondary' do
+                i.fas.fa-heart
+                span フォロー解除
+            - else
+              = link_to bonds_path(pet_id: @pet, user_id: current_user, relation_category_id: 1),method: 'post', class:'button2 button-secondary' do
+                i.far.fa-heart
+                span フォロー
+      div.species #{@pet.species}
+      ul.details
+        - if @pet.sex.present?
+          li.sex #{@pet.sex}
+        li.age #{@pet.age}
+        - if @pet.birthday.present?
+          li.birthday 誕生日 : #{@pet.birthday&.strftime("%Y年%-m月%-d日")}
+        - if @pet.join_day.present?
+          li.join_day お迎え日 : #{@pet.join_day&.strftime("%Y年%-m月%-d日")}
+      ul.count
+        li
+          i.fas.fa-sticky-note
+          span 投稿
+          span.number 34
+          span 件
+        li
+          i.fas.fa-heart
+          span フォロワー
+          span.number #{@followers.size}
+          span 人
+      div.owner
+        = link_to user_path(@owner) do
+          div.owner_avatar
+            = image_tag (@owner.avatar.avatar_s.url) if @owner.avatar && @owner.avatar.url
+          h4.owner_name #{@owner.name}
+    div.twelve.columns
+      div.comment #{@pet.comment}
+    div.twelve.columns.indication
+      - if @pet.intrust == true
+        div.button2.button-secondary
+          i.fas.fa-hand-holding-heart
+          span 里親を募集しています
+  - if @pet.check_pet_famiry(current_user)
+    section.raw#pet_menu_nav
+      ul
+        li
+          = link_to 'コンテンツ', pet_contents_path(pet_id: @pet), class:"button2"
+        li
+          = link_to 'LOGスタンプ編集', pet_record_categories_path(pet_id: @pet), class:"button2"
+  section.raw.card_list#family_list
+    = render partial: 'card_list', locals: { list: @familys, list_title: 'ファミリーユーザー' }
+  section.raw.card_list#follower_list
+    = render partial: 'card_list', locals: { list: @followers, list_title: 'フォロワーユーザー' }

@@ -19,10 +19,10 @@ class RecordCategoriesController < ApplicationController
     end
     @record_category = RecordCategory.new(record_category_params)
     if @record_category.save
-      redirect_to pet_record_categories_path, notice: "レコードカテゴリ「#{@record_category.title}」を作成しました"
+      redirect_to pet_record_categories_path, notice: "ログスタンプカテゴリ「#{@record_category.title}」を作成しました"
     else
       @pet = Pet.find(params[:pet_id])
-      render :new, id: params[:id], notice: "レコードカテゴリ「#{@record_category.title}」を作成できませんでした"
+      render :new, id: params[:id], notice: "ログスタンプカテゴリ「#{@record_category.title}」を作成できませんでした"
     end
   end
 
@@ -34,11 +34,11 @@ class RecordCategoriesController < ApplicationController
 
   def update
     unless check_pet_id(record_category_params[:pet_id])
-      redirect_to pet_path(session[:pet_id]), alert: "レコードカテゴリ作成の失敗。ペットIDが不正な値です。"
+      redirect_to pet_path(session[:pet_id]), alert: "ログスタンプカテゴリ作成の失敗。ペットIDが不正な値です。"
     end
     @record_category = RecordCategory.find_by(id: params[:id])
     if @record_category.update(record_category_params)
-      redirect_to pet_record_categories_path, notice: "レコードカテゴリ「#{@record_category.title}」を編集しました"
+      redirect_to pet_record_categories_path, notice: "ログスタンプカテゴリ「#{@record_category.title}」を編集しました"
     else
       @pet = Pet.find(params[:pet_id])
       render :edit, id: params[:id]
@@ -47,11 +47,11 @@ class RecordCategoriesController < ApplicationController
 
   def destroy
     unless check_pet_id(params[:pet_id])
-      redirect_to pet_path(session[:pet_id]), alert: "レコードカテゴリ作成の失敗。ペットIDが不正な値です。"
+      redirect_to pet_path(session[:pet_id]), alert: "ログスタンプカテゴリ作成の失敗。ペットIDが不正な値です。"
     end
     @record_category = RecordCategory.find_by(id: params[:id])
     if @record_category.destroy
-      redirect_to pet_record_categories_path, notice: "レコードカテゴリ「#{@record_category.title}」を削除しました"
+      redirect_to pet_record_categories_path, notice: "ログスタンプカテゴリ「#{@record_category.title}」を削除しました"
     else
       @pet = Pet.find(params[:pet_id])
       render :edit, id: params[:id]

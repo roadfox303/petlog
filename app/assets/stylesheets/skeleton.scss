@@ -206,6 +206,11 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
+  transition:all 0.15s ease-out;
+  &:hover {
+    color: #FF436B;
+    border: 1px solid #FF436B;
+  }
 }
 
 .button:hover,
