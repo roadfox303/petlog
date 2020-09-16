@@ -16,9 +16,4 @@ class ContentsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
   end
 
-  def check_family?
-    unless @pet.check_pet_famiry(current_user)
-      redirect_to pet_path(@pet)
-    end
-  end
 end

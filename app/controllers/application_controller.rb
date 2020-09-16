@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   helper_method :current_user
-  helper_method :category_follower
-  helper_method :category_former
-  helper_method :category_family
-  helper_method :category_owner
   before_action :login_required
 
   def generate_form_select(hash, key)
@@ -15,13 +11,11 @@ class ApplicationController < ActionController::Base
     @pet.owner == current_user
   end
 
-  def check_pet_id(pet_id)
-    pet_id.to_i == session[:pet_id]
+  def check_family?
+    unless @pet.check_pet_famiry(current_user)
+      redirect_to pet_path(@pet)
+    end
   end
-
-  # def check_record_category_id(record_category_id)
-  #   record_category_id.to_i == session[:record_category_id]
-  # end
 
   private
 

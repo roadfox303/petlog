@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   before_action :set_pet_id
   before_action :set_content_id
+  before_action :check_family?
 
   def new
     @categories = @pet.record_categories.includes(:icon).all
