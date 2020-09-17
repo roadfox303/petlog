@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :check_family?
   def index
     @content = @pet.contents.find_or_create_by(have_on: Date.today)
-    @contents = @pet.contents.includes(:records).includes(:records => :user).all.order(have_on: :DESC).order("records.created_at desc")
+    @contents = @pet.contents.includes(:records).includes(:records => :user).all.order(have_on: :DESC).order("records.created_at desc").page(params[:page]).per(30)
   end
 
   private

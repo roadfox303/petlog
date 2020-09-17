@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy, :follower, :following]
-  skip_before_action :login_required, only: [:index, :new, :create, :show ]
-
-  def index
-    @users = User.all
-  end
+  skip_before_action :login_required, only: [:new, :create, :show ]
 
   def new
     @user = User.new
@@ -25,8 +21,8 @@ class UsersController < ApplicationController
     @followers = @user.followers
     @followings = @user.followings
     @family_pets = @user.family_pets.order(id: "ASC")
-    # @follow_pets = @user.follow_pets.order(id: "DESC")
-    @follow_pets = @user.follow_pets.includes(pet: :owner).order(id: "DESC")
+    @follow_pets_all = @user.follow_pets.includes(pet: :owner).order(id: "DESC")
+    @follow_pets = @follow_pets_all.page(params[:page]).per(30)
     @authority = auth_user?
   end
 
@@ -44,14 +40,16 @@ class UsersController < ApplicationController
   end
 
   def follower
-    @followers = @user.follower_users
+    @users = @user.follower_users
+    @followers = Kaminari.paginate_array(@users).page(params[:page])
     @mutual_relationships = (current_user.following_users & current_user.follower_users).map do |user|
       [user.id, user.relation_category]
     end
   end
 
   def following
-    @followings = @user.following_users
+    @users = @user.following_users
+    @followings = Kaminari.paginate_array(@users).page(params[:page])
     @mutual_relationships = (current_user.follower_users & current_user.following_users).map do |user|
       [user.id, user.relation_category]
     end

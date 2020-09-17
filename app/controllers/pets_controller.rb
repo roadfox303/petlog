@@ -1,10 +1,9 @@
 class PetsController < ApplicationController
   before_action :set_id, only: [:show, :edit, :update, :destroy]
   before_action :params_modifi, only: [:create, :update]
-  include BondGenerate
 
   def index
-    @pets = Pet.all.includes(:owner, :bonds)
+    @pets = Pet.all.includes(:owner, :bonds).page(params[:page])
   end
 
   def new
@@ -14,9 +13,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     if @pet.save
-      PetsController.bond_create(user_id: current_user.id, pet_id: @pet.id, relation_category_id: 4)
+      @pet.bonds.create(user_id: current_user.id, relation_category_id: 4)
       generate_record_category_preset
-      redirect_to users_path, notice: "オーナーとして「#{@pet.name}」を登録しました"
+      redirect_to user_path(current_user), notice: "オーナーとして「#{@pet.name}」を登録しました"
     else
       render :new
     end
@@ -40,7 +39,8 @@ class PetsController < ApplicationController
 
   def show
     @familys = @pet.family_users
-    @followers = @pet.follower_users
+    @follower_users = @pet.follower_users
+    @followers = @follower_users.page(params[:page]).per(30)
     @owner = @pet.owner
     @bond = current_user.bonds.find_by(pet_id: @pet) unless current_user == @owner
   end

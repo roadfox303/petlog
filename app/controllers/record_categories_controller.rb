@@ -4,7 +4,7 @@ class RecordCategoriesController < ApplicationController
   before_action :load_icons
   def index
     @pet = Pet.find(params[:pet_id])
-    @record_categories = @pet.record_categories.includes(:icon).order(updated_at: "DESC")
+    @record_categories = @pet.record_categories.includes(:icon).order(updated_at: "DESC").page(params[:page]).per(20)
   end
 
   def new

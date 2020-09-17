@@ -69,6 +69,13 @@ article
         li
           = link_to 'LOGスタンプ編集', pet_record_categories_path(pet_id: @pet), class:"button2"
   section.raw.card_list#family_list
-    = render partial: 'card_list', locals: { list: @familys, list_title: 'ファミリーユーザー' }
+    div.title
+      h5 ファミリーユーザー
+      span … #{@familys.size} 人
+    = render partial: 'card_list', locals: { list: @familys }
   section.raw.card_list#follower_list
-    = render partial: 'card_list', locals: { list: @followers, list_title: 'フォロワーユーザー' }
+    div.title
+      h5 フォロワーユーザー
+      span … #{@follower_users.size} 人
+    = render partial: 'card_list', locals: { list: @followers }
+    = paginate @followers

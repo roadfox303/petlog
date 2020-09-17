@@ -1,7 +1,7 @@
 section.raw.raw_list
   div.title
     h5 #{list_title}
-    span … #{list.size} 人
+    span … #{@users.size} 人
 section.raw.users_list#relation_users
   - list.each do |user|
     article.hover_box
@@ -19,3 +19,4 @@ section.raw.users_list#relation_users
             i.fas.fa-comment
           = truncate(user.comment, :length => 120)
         = generate_relation_btn(user, list_type.to_sym)
+= paginate list
