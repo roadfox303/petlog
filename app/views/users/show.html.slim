@@ -54,6 +54,13 @@ article
         li
           = link_to 'フォロワーユーザー一覧', follower_user_path, class:'button2'
   section.raw.card_list#family_list
-    = render partial: 'card_list', locals: { list: @family_pets, list_title: 'ファミリーペット' }
+    div.title
+      h5 ファミリーペット
+      span … #{@family_pets.size}
+    = render partial: 'card_list', locals: { list: @family_pets }
   section.raw.card_list#follower_list
-    = render partial: 'card_list', locals: { list: @follow_pets, list_title: 'フォローアニマル' }
+    div.title
+      h5 フォローアニマル
+      span … #{@follow_pets_all.size}
+    = render partial: 'card_list', locals: { list: @follow_pets }
+    = paginate @follow_pets

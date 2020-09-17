@@ -42,7 +42,7 @@ gem 'carrierwave'
 gem 'mini_magick', '~> 4.8'
 gem 'fog'
 gem 'dotenv-rails'
-gem 'kaminari'
+gem 'kaminari', '~> 0.17.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

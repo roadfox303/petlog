@@ -17,3 +17,4 @@ article
           div.buttons
             = link_to '削除', pet_record_category_path(id:category), method: 'delete', class: 'button-primary delete'
             = link_to '編集', edit_pet_record_category_path(id:category), class: 'button-primary edit'
+  = paginate @record_categories
