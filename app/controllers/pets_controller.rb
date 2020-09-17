@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   include BondGenerate
 
   def index
-    @pets = Pet.all.includes(:owner, :bonds)
+    @pets = Pet.all.includes(:owner, :bonds).page(params[:page])
   end
 
   def new
