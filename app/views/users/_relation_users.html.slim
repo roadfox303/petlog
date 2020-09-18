@@ -1,0 +1,22 @@
+section.raw.raw_list
+  div.title
+    h5 #{list_title}
+    span … #{@users.size} 人
+section.raw.users_list#relation_users
+  - list.each do |user|
+    article.hover_box
+      div.left_column
+        = link_to user_path(user), id: "user_#{user.id}" do
+          - if user.avatar && user.avatar.url
+            = image_tag (user.avatar.avatar_m.url) if user.avatar && user.avatar.url
+          - else
+            div.empty_user_avatar
+      div.right_column
+        = link_to user_path(user), id: "user_#{user.id}" do
+          h3.user_name #{user.name}
+        span.user_comment
+          -if user.comment.present?
+            i.fas.fa-comment
+          = truncate(user.comment, :length => 120)
+        = generate_relation_btn(user, list_type.to_sym)
+= paginate list

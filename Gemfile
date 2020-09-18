@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -38,6 +38,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'slim-rails'
 gem "jquery-rails"
+gem 'carrierwave'
+gem 'mini_magick', '~> 4.8'
+gem 'fog'
+gem 'dotenv-rails'
+gem 'kaminari', '~> 0.17.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,12 @@
+h1 ログイン
+div.raw
+  = form_with scope: :session, local: true do |f|
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'u-full-width', id: 'session_email'
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'u-full-width', id: 'session_password'
+    div.button_box
+      = f.submit 'ログイン' , class:'button-primary'
+      = link_to 'サインアップ', new_user_path, class:'button button-primary'

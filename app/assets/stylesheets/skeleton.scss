@@ -158,10 +158,11 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: #DE3A5D; }
 a:hover {
-  color: #0FA0CE; }
-
+  color: #FF436B; }
+a .hover_none, a:hover .hover_none {
+  color: #412B2D; }
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -188,7 +189,7 @@ input[type="button"] {
   cursor: pointer;
   box-sizing: border-box; }
 
-.button2{
+.button2, input[type="submit"].button2 {
   display: inline-block;
   padding: 0 30px;
   color: #555;
@@ -205,6 +206,11 @@ input[type="button"] {
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box;
+  transition:all 0.15s ease-out;
+  &:hover {
+    color: #FF436B;
+    border: 1px solid #FF436B;
+  }
 }
 
 .button:hover,
@@ -226,8 +232,10 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0; }
+  background-color: #FF436B;
+  border-color: #FF436B;
+  border-radius: 0.5rem;
+}
 .button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -239,8 +247,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  background-color: #FF6282;
+  border-color: #FF6282; }
 
 .button-secondary,
 button.button-secondary,
@@ -258,7 +266,7 @@ button.button-secondary:focus,
 input[type="submit"].button-secondary:focus,
 input[type="reset"].button-secondary:focus,
 input[type="button"].button-secondary:focus {
-  border-color: #1EAEDB; }
+  border-color: #FF436B; }
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

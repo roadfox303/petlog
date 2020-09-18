@@ -1,0 +1,16 @@
+- record_category.errors.any?
+  = render partial: 'shared/errors', locals: { object: record_category }
+= form_with model: [@pet,record_category], local:true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, placeholder:"※必須", id: 'record_category_title'
+  .form-group
+    = f.label :description
+    = f.text_area :description, placeholder:"説明", id: 'record_category_description'
+  .form-group
+    = f.label :icon_id
+    div.icons_btn data="record_category_icon"
+      = render partial: 'icons_button', locals: { list: @all_icons, list_title: '全カテゴリー' }
+    = f.select :icon_id, @all_icons.map { |obj| [obj.name, obj.id, {class: obj.style} ] }, id: "record_category_icon"
+  div.button_box
+    = f.submit '登録する' , class:'button-primary'

@@ -1,0 +1,150 @@
+// Place all the styles related to the contents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #412B2D;
+$font-color-light: #8D99AF;
+$font-placeholder: #cccccc;
+$icon-color: #ff938b;
+$border-color: #DAD8D4;
+$focus-color: #33C3F0;
+$hover_box: #F2F5F6;
+.contents_list article.date {
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border: solid 1px #DAD8D4;
+}
+.content_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content_header h5{
+  margin: 0;
+  letter-spacing: 0.05rem;
+}
+.content_header .create_button a{
+  padding: 0.6rem 1.6rem;
+  font-size: 1.2rem;
+}
+.content{
+  border-top: solid 1px #eeeeee;
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.date article:first-child {
+  margin-top: 2rem;
+}
+.content .left_column{
+  width: auto!important;
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
+}
+.content .owner_avatar{
+  width: 24px;
+  height: 24px;
+  margin-right: 0;
+  background: $border-color;
+  border-radius: 50%;
+  overflow: hidden;
+  border: solid 2px $border-color;
+  margin-right: 1rem;
+}
+
+.content .owner_avatar img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.content .user_name{
+
+}
+.content .center_column{
+  width: auto!important;
+  display: flex!important;
+  width: 100%;
+  align-items: center;
+  float: right;
+}
+.content .icon{
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: $icon-color;
+  border: solid 2px $icon-color;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.content .icon i{
+  color: #fff;
+  margin: 0;
+  line-height: 32px;
+  font-size: 20px;
+}
+.content span{
+  display: inline;
+  margin-right: 2rem;
+}
+.content .time{
+  // border: solid 1px $font-color;
+  // background: #eeeeee;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 8rem;
+  text-align: center;
+  border-radius: 4px;
+}
+.content .title{
+  font-weight: bold;
+}
+.content .right_column{
+  align-items: center;
+}
+.content .right_column a{
+  height: 36px;
+  margin-left: 2rem;
+}
+.content .right_column i{
+  font-size: 2rem;
+  line-height: 36px;
+}
+.record_memo{
+  padding: 1rem  1rem 1rem 0;
+  margin: 0 0 1rem;
+  background: #eeeeee;
+  border-radius: 4px;
+}
+.record_memo:last-child{
+  margin-bottom: 0;
+}
+.record_memo dt{
+  float: left;
+  width: 8rem;
+  text-align: center;
+  font-weight: bold;
+}
+.record_memo dd{
+  margin-inline-start: 8rem;
+}
+.content span.memo_btn{
+  margin: 0;
+  color: $font-color;
+  transition:all 0.15s ease-out;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: $vivid-color;
+  }
+}

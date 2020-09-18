@@ -1,11 +1,20 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$border-color: #e0e0e0;
-.users h1 {
-  margin: 1rem 0;
-}
-.users .user_profile {
+$base-color: #F2F5F6;
+$middium-color: #8D99AF;
+$thema-color: #DE3A5D;
+$vivid-color: #FF436B;
+$dark-color: #B82C5C;
+$font-color: #412B2D;
+$font-color-light: #8D99AF;
+$font-placeholder: #cccccc;
+$icon-color: #ff938b;
+$border-color: #DAD8D4;
+$focus-color: #33C3F0;
+$hover_box: #F2F5F6;
+
+.user_profile {
   overflow: hidden;
   padding: 3rem 0;
 }
@@ -16,7 +25,7 @@ $border-color: #e0e0e0;
   height: 152px;
   width: 152px;
   margin: auto;
-  background: #cccccc;
+  background: $border-color;
   border-radius: 50%;
 }
 .user_profile .right {
@@ -28,13 +37,13 @@ $border-color: #e0e0e0;
   padding-right: 4rem;
   line-height: 2.2;
 }
-.user_profile .edit {
+.user_profile .edit, .user_profile .follow {
   display: table-cell;
   padding: 0;
   vertical-align: middle;
   line-height: 1;
 }
-.user_profile .edit .button2{
+.user_profile .edit .button2, .user_profile .follow .button2{
   padding: 0.8rem 3rem;
 }
 .user_profile .count {
@@ -63,16 +72,16 @@ $border-color: #e0e0e0;
   width: 100%;
 }
 .card_list {
-  border-top: solid 1px $border-color;
+  border-top: dashed 1px $border-color;
   padding-top: 2.4rem;
 }
 .card_list h6 {
   display: block;
 }
-.card_list .title {
+.card_list .title,.raw_list .title {
   display: table;
 }
-.card_list .title h6, .card_list .title span {
+.card_list .title h6, .card_list .title span,.raw_list .title h6, .raw_list .title span {
   display: table-cell;
 }
 .user_profile input {
@@ -81,4 +90,136 @@ $border-color: #e0e0e0;
 .card_list .submit {
   margin: auto;
   display: block;
+}
+
+/* ユーザーリスト */
+.users_list article{
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border: solid 1px $border-color ;
+}
+.users_list article a {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  &:hover {
+    color: $font-color;
+  }
+}
+.users_list article a:hover .user_name{
+  color: $vivid-color;
+}
+.users_list article h3,.users_list article h4{
+  margin-bottom: 0;
+}
+.users_list .left_column{
+  width: 104px;
+  padding-right:2rem;
+}
+.users_list .left_column img,.users_list .left_column div{
+  display: block;
+  height: 104px;
+  width: 104px;
+  border-radius: 50%;
+  background: $border-color;
+}
+.users_list .right_column{
+  display: block;
+  height: auto;
+}
+.users_list .user_name{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.users_list .pet_species{
+  font-size: 1.4rem;
+  color: $font-color-light;
+}
+.users_list .right_column span{
+  display: block;
+}
+.users_list .right_column .user_comment{
+  padding: 0.2rem 0 0.8rem;
+}
+
+/* ユーザーメニュー */
+
+#user_menu_nav,#pet_menu_nav {
+  display: flex;
+  justify-content: center;
+  border-top: 1px dashed $border-color;
+  padding: 2rem 0 1rem;
+}
+#user_menu_nav ul,#pet_menu_nav ul{
+  display: block;
+  float: left;
+}
+#user_menu_nav li,#pet_menu_nav li {
+  display: block;
+  float: left;
+  margin: 0 1rem;
+}
+#user_menu_nav li a,#pet_menu_nav li a{
+  font-size: 1.4rem;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0;
+  border: none;
+  box-shadow: 1px 1px 1px #ccc;
+  border-left: solid 0.5rem $thema-color;
+  background: #fff;
+}
+
+
+#relation_users .hover_box{
+  display: flex;
+}
+#relation_users .right_column{
+  width: 100%;
+}
+#relation_users .relation_box{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-top: 1px dashed $border-color;
+  padding-top: 1rem;
+}
+#relation_users .relation_box form{
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+#relation_users .relation_box i{
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+#relation_users .button2{
+  display: block;
+  padding: 0.5rem 2rem;
+  width: 13rem;
+  margin-right: 1rem;
+  &:hover {
+    color: $vivid-color;
+  }
+}
+#avatar_btn:hover{
+  color: $focus-color;
+  border: solid 1px $focus-color;
+}
+#relation_users .relation_comment{
+  width: 18rem;
+}
+.color_receive_follow{
+  color: #bbbbbb;
+}
+.color_send_family{
+  color: #62c1f0;
+}
+.color_receive_family{
+  color: #ffc45e;
+}
+.color_family{
+  color:$vivid-color;
 }

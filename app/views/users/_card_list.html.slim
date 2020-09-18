@@ -1,0 +1,16 @@
+ul
+  - list.each do |bond|
+    li
+      = link_to pet_path(bond.pet) do
+        div.avatar
+          = image_tag (bond.pet.avatar.avatar_m.url) if bond.pet.avatar && bond.pet.avatar.url
+        div.details
+          span.name #{bond.pet.name}
+          span.relation_category
+            - if bond.relation_category.title == 'フォロワー'
+              | フォロー
+            - else
+              | #{bond.relation_category.title}
+          span.relation_owner.hover_none
+            - if bond.relation_category.title == 'フォロワー'
+              | #{bond.pet.owner.name}
