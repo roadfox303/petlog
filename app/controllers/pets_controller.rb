@@ -86,12 +86,12 @@ class PetsController < ApplicationController
 
   def generate_record_category_preset
     @pet.record_categories.create [
-      { title: '病院', icon_id:23},
-      { title: 'くすり', description:'処方薬', icon_id:16},
-      { title: '爪切り', icon_id:18},
-      { title: 'おふろ', description:'シャワー', icon_id:17},
-      { title: 'さんぽ', description:'普段のコース', icon_id:12},
       { title: 'ごはん', description:'ペットフード', icon_id:10},
+      { title: 'さんぽ', description:'普段のコース', icon_id:12},
+      { title: 'おふろ', description:'シャワー', icon_id:17},
+      { title: '爪切り', icon_id:18},
+      { title: 'くすり', description:'処方薬', icon_id:16},
+      { title: '病院', icon_id:23},
     ]
   end
 end
