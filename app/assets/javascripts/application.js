@@ -18,10 +18,19 @@
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
-
+  $('.drawer').drawer();
   autosize($('textarea'));
   $('.card_list .avatar').autocircle();
-  $(window).on('resize', function(){
+  $(window).on('load resize', function(){
+    if ($(window).width() <= 896){
+      $('.drawer').drawer();
+      $('body').addClass('drawer drawer--right');
+      $('#top_nav .container').addClass('drawer-nav');
+    }else{
+      $('body').removeClass('drawer drawer--right');
+      $('#top_nav .container').removeClass('drawer-nav');
+    }
     $('.card_list .avatar').autocircle();
   });
+
 });
