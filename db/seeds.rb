@@ -38,8 +38,8 @@ if Icon.count == 0
     { name: 'お風呂', style: 'fas fa-bath'},
     { name: '爪切り', style: 'fas fa-hand-sparkles'},
     { name: 'トリミング', style: 'fas fa-cut'},
-    { name: '計測1', style: 'fas fa-weight'},
-    { name: '計測2', style: 'fas fa-temperature-high'}
+    { name: '体重', style: 'fas fa-weight'},
+    { name: '体温', style: 'fas fa-temperature-high'}
   ]
 
   IconEvent.create! [
