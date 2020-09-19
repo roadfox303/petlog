@@ -9,6 +9,7 @@ article
               = image_tag (pet.avatar.avatar_m.url) if pet.avatar && pet.avatar.url
             - else
               div.empty_pet_avatar
+                = image_tag('icon_pet.png')
           div.right_column
             h3.pet_name #{pet.name}
             span.pet_species #{pet.species}
@@ -20,7 +21,10 @@ article
               li
                 div.owner
                   div.owner_avatar
-                    = image_tag (pet.owner.avatar.avatar_s.url) if pet.owner.avatar && pet.owner.avatar.url
+                    - if pet.owner.avatar && pet.owner.avatar.url
+                      = image_tag (pet.owner.avatar.avatar_s.url)
+                    - else
+                      = image_tag('icon_user.png')
                   h4.owner_name #{pet.owner&.name}
               li
                 i.fas.fa-heart

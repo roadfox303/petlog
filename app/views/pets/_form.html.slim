@@ -8,7 +8,10 @@
     div.four.columns.left
       div.avatar
         div#img_field
-          = image_tag(pet.avatar.avatar_m.url) if pet.avatar && pet.avatar.url
+          - if pet.avatar && pet.avatar.url
+            = image_tag(pet.avatar.avatar_m.url)
+          - else
+            = image_tag('icon_pet.png')
       = f.label :avatar
         span.button2.button-secondary#avatar_btn プロフィール画像
         = f.file_field :avatar, placeholder:"プロフィール画像", class: "image_form", id:'pet_avatar'

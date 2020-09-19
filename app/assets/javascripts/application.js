@@ -19,18 +19,22 @@
 
 document.addEventListener('turbolinks:load', function() {
   $('.drawer').drawer();
+  switch_drawer();
   autosize($('textarea'));
   $('.card_list .avatar').autocircle();
-  $(window).on('load resize', function(){
-    if ($(window).width() <= 896){
-      $('.drawer').drawer();
-      $('body').addClass('drawer drawer--right');
-      $('#top_nav .container').addClass('drawer-nav');
-    }else{
-      $('body').removeClass('drawer drawer--right');
-      $('#top_nav .container').removeClass('drawer-nav');
-    }
+  $(window).on('resize', function(){
+    switch_drawer();
     $('.card_list .avatar').autocircle();
   });
-
 });
+
+function switch_drawer(){
+  if ($(window).width() <= 896){
+    $('.drawer').drawer();
+    $('body').addClass('drawer drawer--right');
+    $('#top_nav .container').addClass('drawer-nav');
+  }else{
+    $('body').removeClass('drawer drawer--right');
+    $('#top_nav .container').removeClass('drawer-nav');
+  }
+}
