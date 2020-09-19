@@ -3,10 +3,13 @@ article
   - @user.errors.any?
     = render partial: 'shared/errors', locals: { object: @user }
 
-  section.raw.user_profile
+  section.raw.user_profile#show_profile
     div.four.columns.left
       div.avatar
-        = image_tag (@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
+        - if @user.avatar && @user.avatar.url
+          = image_tag (@user.avatar.avatar_m.url)
+        - else
+          = image_tag('icon_user.png')
     div.eight.columns.right
       div.raw
         div.name #{@user.name}
@@ -27,10 +30,6 @@ article
                 i.far.fa-address-book
                 span フォロー
       ul.count
-        li
-          span 投稿
-          span.number 34
-          span 件
         li
           = link_to follower_user_path do
             span フォロワー

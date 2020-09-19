@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: #F2F5F6;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -51,17 +51,40 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  .error{
+    height: 60vh;
+    width: auto;
+    max-width: 512px;
+    margin: 15vh auto;
+    display: flex;
+    justify-content: center;
+    background: url("./404.png") no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+  }
+  .error img {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+  .error span{
+    display: block;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    color: #412B2D;
+    position: absolute;
+    bottom: -2rem;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>404</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+  <div class="error">
+    <span>お探しのページは見つかりません。</span>
   </div>
 </body>
 </html>

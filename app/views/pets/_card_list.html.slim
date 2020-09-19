@@ -3,7 +3,10 @@ ul
     li
       = link_to user_path(bond.user) do
         div.avatar
-          = image_tag (bond.user.avatar.avatar_m.url) if bond.user.avatar && bond.user.avatar.url
+          - if bond.user.avatar && bond.user.avatar.url
+            = image_tag (bond.user.avatar.avatar_m.url)
+          - else
+            = image_tag('icon_user.png')
         div.details
           span.name #{bond.user.name}
           span.relation_category #{bond.relation_category.title}

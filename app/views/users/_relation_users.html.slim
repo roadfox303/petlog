@@ -10,7 +10,7 @@ section.raw.users_list#relation_users
           - if user.avatar && user.avatar.url
             = image_tag (user.avatar.avatar_m.url) if user.avatar && user.avatar.url
           - else
-            div.empty_user_avatar
+            = image_tag('icon_user.png')
       div.right_column
         = link_to user_path(user), id: "user_#{user.id}" do
           h3.user_name #{user.name}
