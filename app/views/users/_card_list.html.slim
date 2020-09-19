@@ -3,7 +3,10 @@ ul
     li
       = link_to pet_path(bond.pet) do
         div.avatar
-          = image_tag (bond.pet.avatar.avatar_m.url) if bond.pet.avatar && bond.pet.avatar.url
+          - if bond.pet.avatar && bond.pet.avatar.url
+            = image_tag (bond.pet.avatar.avatar_m.url)
+          - else
+            = image_tag('icon_pet.png')
         div.details
           span.name #{bond.pet.name}
           span.relation_category

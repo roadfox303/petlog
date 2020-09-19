@@ -9,7 +9,10 @@ h1.user ユーザープロフィール
     div.four.columns.left
       div.avatar
         div#img_field
-          = image_tag(@user.avatar.avatar_m.url) if @user.avatar && @user.avatar.url
+          - if @user.avatar && @user.avatar.url
+            = image_tag(@user.avatar.avatar_m.url)
+          - else
+            = image_tag('icon_user.png')
       = f.label :avatar
         span.button2.button-secondary#avatar_btn プロフィール画像
         = f.file_field :avatar, placeholder:"プロフィール画像", class: "image_form", id:'user_avatar'

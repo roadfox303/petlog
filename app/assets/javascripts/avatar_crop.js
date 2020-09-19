@@ -18,8 +18,8 @@ $(document).on('turbolinks:load', function() {
       content_source: '#cropper',
       inject_position: 'h1'
     });
-    $('#crop_enter').on('click',function(){
-      $('#img_field').modaal('close');
+    $(document).on("click", "#crop_enter", function(){
+        $('#img_field').modaal('close');
     });
     $fileField = $('.image_form')
     $($fileField).on('change', $fileField, function(e) {

@@ -21,6 +21,7 @@ $hover_box: #F2F5F6;
   margin-bottom: 1rem;
   padding: 2rem;
   border: solid 1px $border-color ;
+  overflow: hidden;
 }
 .pets_list article a {
   display: flex;
@@ -38,7 +39,7 @@ $hover_box: #F2F5F6;
 }
 .pets_list .left_column{
   width: 104px;
-  padding-right:2rem;
+  padding-right:3rem;
 }
 .pets_list .left_column img,.pets_list .left_column div{
   display: block;
@@ -232,6 +233,7 @@ $hover_box: #F2F5F6;
 }
 .card_list li .details{
   width: 70%;
+  overflow: hidden;
 }
 .card_list li .details span{
   display: block;
@@ -240,7 +242,10 @@ $hover_box: #F2F5F6;
 .card_list li .details .name{
   font-size: 1.8rem;
   line-height: 1.2;
-  word-break:break-all;
+  // word-break:break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card_list li .details .relation_category{

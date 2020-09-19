@@ -2,10 +2,13 @@ article
   h1 ペットプロフィール
   - @pet.errors.any?
     = render partial: 'shared/errors', locals: { object: @pet }
-  section.raw.pet_profile
+  section.raw.pet_profile#show_profile
     div.four.columns.left
       div.avatar
-        = image_tag (@pet.avatar.avatar_m.url) if @pet.avatar && @pet.avatar.url
+        - if @pet.avatar && @pet.avatar.url
+          = image_tag (@pet.avatar.avatar_m.url)
+        - else
+          = image_tag('icon_pet.png')
     div.eight.columns.right
       div.raw
         div.name #{@pet.name}
@@ -14,11 +17,9 @@ article
             = link_to edit_pet_path(@pet), class:'button2 button-secondary' do
               i.fas.fa-edit
               span 編集
-            end
             = link_to pet_path(@pet),method: 'delete', data: { confirm: "本当に「#{@pet.name}」 を削除しますか？" }, class:'button2 button-secondary' do
               i.fas.fa-trash
               span 削除
-            end
         - else
           div.follow
             -if @bond.present?
@@ -39,11 +40,6 @@ article
         - if @pet.join_day.present?
           li.join_day お迎え日 : #{@pet.join_day&.strftime("%Y年%-m月%-d日")}
       ul.count
-        li
-          i.fas.fa-sticky-note
-          span 投稿
-          span.number 34
-          span 件
         li
           i.fas.fa-heart
           span フォロワー
