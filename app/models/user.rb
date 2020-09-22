@@ -38,6 +38,10 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id)
   end
 
+  def family_user?(other_user)
+    active_relationships.find_by(followed_id: other_user.id)&.family
+  end
+
   def follower_users
     # passive_relations.map {|r| { user: r.follower, relation: r.relation_category_id }}
     passive_relations.map {|r|

@@ -26,8 +26,12 @@ article
               = link_to bond_path(@bond),method: 'delete', class:'button2 button-secondary' do
                 i.fas.fa-heart
                 span フォロー解除
+            - elsif @pet.owner.family_user?(current_user)
+              = link_to bonds_path(pet_id: @pet, user_id: current_user, relation_category_id: RELATION::FAMILY),method: 'post', class:'button2 button-secondary' do
+                i.far.fa-heart
+                span 家族としてフォロー
             - else
-              = link_to bonds_path(pet_id: @pet, user_id: current_user, relation_category_id: 1),method: 'post', class:'button2 button-secondary' do
+              = link_to bonds_path(pet_id: @pet, user_id: current_user, relation_category_id: RELATION::FOLLOWER),method: 'post', class:'button2 button-secondary' do
                 i.far.fa-heart
                 span フォロー
       div.species #{@pet.species}
