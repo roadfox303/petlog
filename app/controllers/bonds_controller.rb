@@ -9,9 +9,9 @@ class BondsController < ApplicationController
   end
 
   def destroy
-    back = Bond.find(bond_params[:id]).pet_id
-    current_user.bonds.find(bond_params[:id]).destroy
-    redirect_to pet_path(back), notice: 'フォローを解除しました'
+    bond = current_user.bonds.find(bond_params[:id])
+    bond.destroy
+    redirect_to pet_path(bond.pet_id), notice: 'フォローを解除しました'
   end
 
   private

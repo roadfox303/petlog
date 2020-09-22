@@ -352,6 +352,16 @@ input,textarea {
   margin: 2rem auto 0;
   display: block;
 }
+#bottom_nav{
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
+  justify-content: center;
+}
+#bottom_nav a{
+  padding: 0.8rem 1.6rem;
+  background: #fff;
+}
 @media screen and (max-width: 1024px) {
   // #top_nav{
   //   display: block;

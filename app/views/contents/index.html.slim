@@ -1,7 +1,8 @@
 article
   h1 コンテンツ一覧
   div.title
-    h5 #{@pet.name}
+    h5
+      = link_to "#{@pet.name}", pet_path(@pet)
   section.raw.contents_list
     - @contents.each do |date|
       article.date
@@ -36,3 +37,4 @@ article
                 dt memo
                 dd #{record.memo}
   = paginate @contents
+= render partial: 'shared/pet_bottom_nav', locals: { pet: @pet }
