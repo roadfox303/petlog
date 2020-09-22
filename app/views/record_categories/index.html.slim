@@ -1,7 +1,8 @@
 article
   h1 LOGスタンプ一覧
   div.title
-    h5 #{@pet.name}
+    h5
+      = link_to "#{@pet.name}", pet_path(@pet)
   section#record_category_btn
     = link_to new_pet_record_category_path(pet_id: @pet), class:"button2" do
       i.far.fa-plus-square
@@ -18,3 +19,4 @@ article
             = link_to '削除', pet_record_category_path(id:category), method: 'delete', class: 'button-primary delete'
             = link_to '編集', edit_pet_record_category_path(id:category), class: 'button-primary edit'
   = paginate @record_categories
+= render partial: 'shared/pet_bottom_nav', locals: { pet: @pet }

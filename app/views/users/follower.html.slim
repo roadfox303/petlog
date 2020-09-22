@@ -1,3 +1,4 @@
 article
   h1.user フォロワーユーザー一覧
   = render partial: 'relation_users', locals: { list: @followers, list_type:'follower', list_title: 'フォロワー' }
+= render partial: 'shared/user_bottom_nav', locals: { user: current_user }
