@@ -9,11 +9,8 @@ ul
             = image_tag('icon_pet.png')
         div.details
           span.name #{bond.pet.name}
-          span.relation_category
-            - if bond.relation_category.title == 'フォロワー'
-              | フォロー
-            - else
-              | #{bond.relation_category.title}
-          span.relation_owner.hover_none
-            - if bond.relation_category.title == 'フォロワー'
-              | #{bond.pet.owner.name}
+          - if bond.relation_category.id == RELATION::FOLLOWER
+            span.relation_category フォロー
+            span.relation_owner.hover_none #{bond.pet.owner.name}
+          - else
+            span.relation_category #{bond.relation_category.title}

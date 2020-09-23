@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title
+      | Petlog
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link[rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css"]
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"]
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"]
+    link[rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"]
+    script[src="https://kit.fontawesome.com/dc394bf18c.js" crossorigin="anonymous"]
+  |  <body class="drawer drawer--right 
+  = controller.controller_name
+  | " data-controller="
+  = controller.controller_name
+  | " data-action="
+  = controller.action_name
+  | "> 
+  header#top_nav[role="banner"]
+    = link_to 'Petlog', root_path, id:'top_logo_drawer'
+    button.drawer-toggle.drawer-hamburger[type="button"]
+      span.sr-only
+        | toggle navigation
+      span.drawer-hamburger-icon
+    nav.container.drawer-nav[role="navigation"]
+      = link_to 'Petlog', root_path, id:'top_logo'
+      ul.nav-bar.drawer-menu
+        li
+          = link_to pets_path, class:'nav_link' do
+            i.fas.fa-list-alt
+            | ペット一覧
+        - if current_user
+          li
+            = link_to new_pet_path, class:'nav_link' do
+              i.fas.fa-paw
+              | ペット登録
+          li
+            = link_to user_path(current_user), class:'nav_link' do
+              i.fas.fa-user
+              | プロフィール
+          li
+            = link_to logout_path, method: :delete, class:'nav_link' do
+              i.fas.fa-sign-out-alt
+              | ログアウト
+        - else
+          li
+            = link_to login_path, class:'nav_link' do
+              i.fas.fa-sign-in-alt
+              | ログイン
+  main[role="main"]
+    #contents_container.container
+      - if flash.notice.present?
+        .notice
+          = flash.notice
+      - elsif flash.alert.present?
+        .alert
+          = flash.alert
+      = yield
