@@ -16,7 +16,7 @@ article
           - if category.description != ""
             div.description #{category.description}
           div.buttons
-            = link_to '削除', pet_record_category_path(id:category), method: 'delete', class: 'button-primary delete'
+            = link_to '削除', pet_record_category_path(id:category), data: { confirm: "このカテゴリーに属するLOGスタンプの記録が全て削除されてしまいます。本当に「#{category.title}」 を削除しますか？" }, method: 'delete', class: 'button-primary delete'
             = link_to '編集', edit_pet_record_category_path(id:category), class: 'button-primary edit'
   = paginate @record_categories
 = render partial: 'shared/pet_bottom_nav', locals: { pet: @pet }
