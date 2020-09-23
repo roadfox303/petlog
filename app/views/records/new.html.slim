@@ -1,3 +1,5 @@
+- record_category.errors.any?
+  = render partial: 'shared/errors', locals: { object: record_category }
 h1.stamp ログスタンプ
 = form_with model: [@pet, @content, @record] do |f|
   h3.date #{@content.have_on.strftime('%Y/%-m/%-d')}

@@ -71,7 +71,7 @@ h1.user:before {
 }
 .card_list .title h5,.raw_list .title h5,.title h5{
   border-left: solid 5px $icon-color;
-  text-indent: 1rem;
+  padding-left: 1rem;
   margin-right: 1rem;
 }
 .card_list li a {
@@ -361,6 +361,9 @@ input,textarea {
 #bottom_nav a{
   padding: 0.8rem 1.6rem;
   background: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 @media screen and (max-width: 1024px) {
   // #top_nav{
