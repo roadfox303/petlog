@@ -2,7 +2,6 @@ article
   h1.user ユーザープロフィール
   - @user.errors.any?
     = render partial: 'shared/errors', locals: { object: @user }
-
   section.raw.user_profile#show_profile
     div.four.columns.left
       div.avatar
