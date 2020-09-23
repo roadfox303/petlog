@@ -3,5 +3,5 @@ class RecordCategory < ApplicationRecord
 
   belongs_to :pet
   belongs_to :icon
-  has_many :records
+  has_many :records, dependent: :destroy
 end
