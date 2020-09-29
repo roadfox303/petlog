@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password_digest, presence: true, length: { minimum: 8 }, unless: :password_blank?
+  validates :password, presence: true, length: { minimum: 8, allow_blank: true }
+
 
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
@@ -74,9 +74,6 @@ class User < ApplicationRecord
   end
 
   private
-  def password_blank?
-    password.blank?
-  end
 
   def bonds_pets(relation)
     bonds.includes(:pet, :relation_category).where(relation_category_id: relation)
