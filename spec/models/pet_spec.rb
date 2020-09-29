@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Pet, type: :model do
   before do
-    @user = FactoryBot.create(:user)
+    @user = create(:user)
   end
 
   it 'ペット登録成功' do
