@@ -18,6 +18,7 @@ ja:
         avatar: アバター
         comment: コメント
         password: パスワード
+        password_digest: パスワード
         password_confirmation: 確認用パスワード
         created_at: 登録日時
         updated_at: 更新日時

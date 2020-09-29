@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_031812) do
+ActiveRecord::Schema.define(version: 2020_09_29_041255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_031812) do
     t.boolean "intrust", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["intrust"], name: "index_pets_on_intrust"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_031812) do
   create_table "record_categories", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.bigint "pet_id"
-    t.bigint "icon_id"
+    t.bigint "pet_id", null: false
+    t.bigint "icon_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["icon_id"], name: "index_record_categories_on_icon_id"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_031812) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "bonds", "pets"

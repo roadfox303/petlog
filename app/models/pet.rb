@@ -1,5 +1,6 @@
 class Pet < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
+  validates :owner, presence: true
   validate :date_valid?
 
   has_many :bonds
@@ -8,7 +9,6 @@ class Pet < ApplicationRecord
 
   has_many :contents, dependent: :destroy
   has_many :record_categories, dependent: :destroy
-  # accepts_nested_attributes_for :record_categories
 
   mount_uploader :avatar, ImageUploader
   attr_accessor :image_x
