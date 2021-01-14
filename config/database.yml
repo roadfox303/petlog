@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: petlog_production
-  username: petlog
+  username: root
   password: <%= ENV['PETLOG_DATABASE_PASSWORD'] %>
