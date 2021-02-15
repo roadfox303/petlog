@@ -27,7 +27,7 @@ yarn-debug.log*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
+/config/database.yml
 /.bundle
 vendor/bundle
 
@@ -35,5 +35,4 @@ vendor/bundle
 /public/packs-test
 
 .DS_Store
-database_yml
 .env
