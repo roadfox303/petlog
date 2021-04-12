@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pets#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  post '/guest_sign_in', to: 'sessions#new_guest'
   delete '/logout', to: 'sessions#destroy'
   # post '/users/:id/follower', to: 'users#follower'
 

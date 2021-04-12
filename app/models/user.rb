@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
@@ -72,6 +72,13 @@ class User < ApplicationRecord
 
   def passive_relations
     passive_relationships.includes(:follower, :relation_category).order(updated_at: "DESC")
+  end
+
+  def self.guest
+    find_or_create_by(email: "test2@example.com") do |user|
+      user.password = Rails.application.secrets.test_account_pass
+      user.password = "password"
+    end
   end
 
   private
