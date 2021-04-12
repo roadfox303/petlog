@@ -5,12 +5,19 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: session_params[:email])
+    binding.pry
     if user&.authenticate(session_params[:password])
       session[:user_id] = user.id
       redirect_to root_path, notice: 'ログインしました'
     else
       render :new
     end
+  end
+
+  def new_guest
+    user = User.guest
+    session[:user_id] = user.id
+    redirect_to user_path(user.id), notice: "テストユーザーとしてログインしました"
   end
 
   def destroy

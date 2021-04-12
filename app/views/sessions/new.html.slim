@@ -10,3 +10,4 @@ div.raw
     div.button_box
       = f.submit 'ログイン' , class:'button-primary'
       = link_to 'サインアップ', new_user_path, class:'button button-primary'
+      = link_to 'テストアカウントでログイン', guest_sign_in_path, method: :post, id:'test_account', class:'button button-primary'
